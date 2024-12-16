@@ -7,15 +7,16 @@ class Respondent:
 
         self.respondent_id = respondent_id
 
-        self.df_gsh = None
-        self.df_typ = None
+        self.df_gsh        = None
+        self.df_typ        = None
 
-        self.census = None  # census responses (everyone fills)
-        self.company = None # company responses (detailed)
-        self.student = None # student responses (detailed)
+        self.metadata      = None # Metadata about the survey response
+        self.census        = None  # census responses (everyone fills)
+        self.company       = None # company responses (detailed)
+        self.student       = None # student responses (detailed)
 
-        self.is_working = False
-        self.is_student = False
+        self.is_working    = False
+        self.is_student    = False
         self.is_unemployed = False
 
 
