@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
+from pyzipcode import ZipCodeDatabase
 
+zcdb = ZipCodeDatabase()
 class Respondent:
 
     def __init__(self, respondent_id : str):
@@ -105,6 +107,14 @@ class Respondent:
         cens['degree']         = self.df_gsh['What did you study in school?'].values[0]
         cens['country']        = self.df_gsh['What country do you live in?'].values[0]
         cens['zip']            = self.df_gsh['What is your ZIP code or postal code?'].values[0]
+
+        # Assign state based on zip code (for valid zip codes only)
+        try:
+            state = zcdb[ cens['zip'] ].state
+        except KeyError:
+            state = None
+        cens['state']          = state
+
         cens['income']         = self.df_gsh['What is your total income over the past 12 months?'].values[0]
         cens['hours_worked']   = self.df_gsh['How many hours did you work last week?'].values[0]
         cens['age']            = self.df_gsh['What is your age?'].values[0]

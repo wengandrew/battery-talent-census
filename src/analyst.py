@@ -144,6 +144,7 @@ class Analyst:
 
         degree = {}
         country = {}
+        state = {}
         education = {}
         ethnicity = {}
         gender = {}
@@ -161,6 +162,11 @@ class Analyst:
                 country[respondent.census['country']] += 1
             else:
                 country[respondent.census['country']] = 1
+
+            if respondent.census['state'] in state.keys():
+                state[respondent.census['state']] += 1
+            else:
+                state[respondent.census['state']] = 1
 
             if respondent.census['education'] in education.keys():
                 education[respondent.census['education']] += 1
@@ -191,6 +197,7 @@ class Analyst:
         res = dict()
         res['degree']           = utils.sort_dict(degree)
         res['country']          = utils.sort_dict(country)
+        res['state']            = utils.sort_dict(state)
         res['education']        = utils.sort_dict(education)
         res['ethnicity']        = utils.sort_dict(ethnicity)
         res['gender']           = utils.sort_dict(gender)
