@@ -4,6 +4,33 @@ Data analysis for Volta Foundation Battery Talent Census.
 
 Created by Andrew Weng, December 15, 2024.
 
+## Getting Started
+
+Want to contribute? Do the following:
+
+1. `git clone` this repository to your local computer, or set up a GitHub
+   codespace to the same effect.
+
+2. Set up your virtual environment and install the requirements. I'm running
+   this on Python 3.13.1.
+
+   ```
+
+   # Initialize venv
+   python -m venv venv     # initialize
+
+   # Activate venv
+   source venv/bin/acivate # activate
+
+   # Install requirements
+   pip install -r requirements.txt
+   ```
+
+3. Read this document to get a sense of how the data and code are organized.
+
+4. Make a copy of `notebooks/explore_data.ipynb` and start exploring.
+
+
 ## Datasets
 
 Datasets for the analysis are kept under `/data`.
