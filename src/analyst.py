@@ -274,9 +274,12 @@ class Analyst:
 
         # Initialize dictionary of counters
         summary = {'num_total': 0,
-                   'num_working': 0, 'num_working_and_completed_all_questions': 0,
-                   'num_student': 0, 'num_student_and_completed_all_questions': 0,
-                   'num_unemployed': 0, 'num_unemployed_and_completed_all_questions': 0}
+                   'num_working': 0,
+                   'num_working_and_completed_all_questions': 0,
+                   'num_student': 0,
+                   'num_student_and_completed_all_questions': 0,
+                   'num_unemployed': 0,
+                   'num_unemployed_and_completed_all_questions': 0}
 
         # Initialize lists for tabulating completion times within each subgroup
         working_mins = []
