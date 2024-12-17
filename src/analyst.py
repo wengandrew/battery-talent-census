@@ -336,7 +336,9 @@ class Analyst:
         summary['mins_unemployed_completed_list'] = unemployed_completed_mins
 
         # For plotting number of response over time
-        summary['response_by_time_datetime'] = pd.to_datetime(self.df_gsheet['Submitted At']).values
+        # Sort the response times in ascending order and get corresponding count
+        sorted_indices = np.argsort(pd.to_datetime(self.df_gsheet['Submitted At']).values)
+        summary['response_by_time_datetime'] = pd.to_datetime(self.df_gsheet['Submitted At']).values[sorted_indices]
         summary['response_by_time_num'] = np.arange(1, self.df_gsheet.shape[0] + 1)
 
         return summary

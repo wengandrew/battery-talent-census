@@ -14,17 +14,26 @@ Want to contribute? Do the following:
 2. Set up your virtual environment and install the requirements. I'm running
    this on Python 3.13.1.
 
+  - Initialize the virtual environment:
+```
+python -m venv venv
+```
+
+  - Now activate it.
+  ```
+  source venv/bin/acivate
    ```
 
-   # Initialize venv
-   python -m venv venv     # initialize
+  - Make sure it worked by checking your python command references the correct
+    instance of `python`
+```
+which python
+```
 
-   # Activate venv
-   source venv/bin/acivate # activate
-
-   # Install requirements
-   pip install -r requirements.txt
-   ```
+   - Install requirements.
+```
+pip install -r requirements.txt
+```
 
 3. Read this document to get a sense of how the data and code are organized.
 
@@ -69,7 +78,7 @@ accessed through a TypeForm plug-in for Google Sheets. This plug-in synchronizes
 the survey outputs to a Google Sheet.
 
 - V1: TypeForm Backend -> TypeForm Website Frontend -> Export Tool
-- V2: TypeForm Backend -> Google Sheets Plug-In -> Google Sheets --> Export Tool
+- V2: TypeForm Backend -> Google Sheets Plug-In -> Google Sheets -> Export Tool
 
 Why are we even looking at two different versions? It turns out that whoever wrote this Google Sheets plug-in didn't fully align
 the data format to that which was used when directly exporting from the TypeForm
@@ -121,7 +130,7 @@ The high-level strategy consists of a few parts:
 ### Level 2: Analysis
 
 - Data pertaining to each analysis, which consists of multiple `Respondent`s, is
-  handled by the `Analyst` class
+  handled by the `Analyst` class.
 
 ### Level 3: Visualization
 
@@ -131,8 +140,8 @@ The high-level strategy consists of a few parts:
 ## Notes for Future Improvement
 
 1. For the question "What is your current employment situation?" include options
-   for "business owner", "self-employed", "consulting", "founder"
+   for "business owner", "self-employed", "consulting", "founder."
 
-2. I received a total of 0 emails about census improvment suggestions. Leavin my
-   email at the end of the census is not an effective way to solicit feedback.
+2. I received a total of 0 emails about census improvment suggestions. Leaving my
+   email at the end of the census was not an effective way to solicit feedback.
    What is a better way?
