@@ -84,9 +84,27 @@ The high-level strategy consists of a few parts:
     repetitive
   - Separate plotting aesthetics from data organization tools
 
+## Analysis Organization
+
+### Level 1: Respondent
+
+- Data pertaining to each respondent is handled by the `Respondent` class.
+
+### Level 2: Analysis
+
+- Data pertaining to each analysis, which consists of multiple `Respondent`s, is
+  handled by the `Analyst` class
+
+### Level 3: Visualization
+
+- This is a work in progress
+
 
 ## Notes for Future Improvement
 
 1. For the question "What is your current employment situation?" include options
    for "business owner", "self-employed", "consulting", "founder"
 
+2. I received a total of 0 emails about census improvment suggestions. Leavin my
+   email at the end of the census is not an effective way to solicit feedback.
+   What is a better way?

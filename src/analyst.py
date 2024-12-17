@@ -194,6 +194,7 @@ class Analyst:
             else:
                 military[respondent.census['military_status']] = 1
 
+        # Bin "nans" with "Decline to answer"
         res = dict()
         res['degree']           = utils.sort_dict(degree)
         res['country']          = utils.sort_dict(country)
