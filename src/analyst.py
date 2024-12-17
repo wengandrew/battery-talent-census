@@ -53,7 +53,9 @@ class Analyst:
         pass
 
 
-    def build_respondents_list(self):
+    def build_respondents_list(self) -> list[Respondent]:
+        """
+        Build a complete list of respondents"""
 
         for token in self.df_gsheet['Token'].unique():
 
@@ -64,7 +66,62 @@ class Analyst:
             self.respondents_list.append(resp)
 
 
-    def summarize_census_sentiment(self, respondents_list=None):
+    def filter_respondents_on(self, is_student=False,
+                                    is_working=False,
+                                    is_unemployed=False,
+                                    is_completed_all_questions=False,
+                                    education=None,
+                                    degree=None,
+                                    country=None,
+                                    state=None,
+                                    ethnicity=None,
+                                    gender=None,
+                                    citizenship=None,
+                                    military_status=None) -> list:
+        """
+        Filter the respondents list based on the filter function
+
+        Returns a filtered list
+        """
+
+        # Validate the inputs to save some grief later on
+        assert isinstance(is_student, bool), "is_student must be a boolean"
+        assert isinstance(is_working, bool), "is_working must be a boolean"
+        assert isinstance(is_unemployed, bool), "is_unemployed must be a boolean"
+        assert isinstance(is_completed_all_questions, bool), "is_completed_all_questions must be a boolean"
+
+        # Use all of the responses to define the list of valid entries
+        backgrounds = self.summarize_census_backgrounds()
+        assert education is None or education in backgrounds['education'].keys(), "Invalid education level"
+        assert degree is None or degree in backgrounds['degree'].keys(), "Invalid degree"
+        assert country is None or country in backgrounds['country'].keys(), "Invalid country"
+        assert state is None or state in backgrounds['state'].keys(), "Invalid state"
+        assert ethnicity is None or ethnicity in backgrounds['ethnicity'].keys(), "Invalid ethnicity"
+        assert gender is None or gender in backgrounds['gender'].keys(), "Invalid gender filter"
+        assert citizenship is None or citizenship in backgrounds['citizenship'].keys(), "Invalid citizenship"
+        assert military_status is None or military_status in backgrounds['military_status'].keys(), "Invalid military status"
+
+        # Create a new list using list comprehension to keep only elements that
+        # do NOT match the removal criteria
+        filtered_list = [r for r in self.respondents_list if (
+            (not is_student or r.is_student) and
+            (not is_working or r.is_working) and
+            (not is_unemployed or r.is_unemployed) and
+            (not is_completed_all_questions or r.is_completed_all_questions) and
+            (education is None or r.census['education'] == education) and
+            (degree is None or r.census['degree'] == degree) and
+            (country is None or r.census['country'] == country) and
+            (state is None or r.census['state'] == state) and
+            (ethnicity is None or ethnicity in r.census['ethnicity']) and
+            (gender is None or r.census['gender'] == gender) and
+            (citizenship is None or r.census['citizenship'] == citizenship) and
+            (military_status is None or r.census['military_status'] == military_status)
+        )]
+
+        return filtered_list
+
+
+    def summarize_census_sentiment(self, respondents_list=None) -> dict:
         """
         Return summary statistics for the census sentiment question
         """
@@ -92,7 +149,7 @@ class Analyst:
 
         return res
 
-    def summarize_census_skills_demand(self, respondents_list=None):
+    def summarize_census_skills_demand(self, respondents_list=None) -> dict:
         """
         Return summary statistics for the skills demand question
         """
@@ -134,7 +191,7 @@ class Analyst:
         return res
 
 
-    def summarize_census_backgrounds(self, respondents_list=None):
+    def summarize_census_backgrounds(self, respondents_list=None) -> dict:
         """
         Return summary of respondent's backgrounds
         """
@@ -208,7 +265,7 @@ class Analyst:
         return res
 
 
-    def summarize_stats(self):
+    def summarize_stats(self) -> dict:
         """
         Return summary statistics of the respondents:
         - Number of survey takers

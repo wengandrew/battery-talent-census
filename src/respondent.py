@@ -13,9 +13,9 @@ class Respondent:
         self.df_typ        = None
 
         self.metadata      = None # Metadata about the survey response
-        self.census        = None  # census responses (everyone fills)
-        self.company       = None # company responses (detailed)
-        self.student       = None # student responses (detailed)
+        self.census        = None # census responses (everyone fills)
+        self.company       = None # company responses (detailed; only some fill)
+        self.student       = None # student responses (detailed; only some fill)
 
         self.is_working                                = False
         self.is_working_and_completed_all_questions    = False
@@ -23,7 +23,7 @@ class Respondent:
         self.is_student_and_completed_all_questions    = False
         self.is_unemployed                             = False
         self.is_unemployed_and_completed_all_questions = False
-
+        self.is_completed_all_questions                = False
 
     def __repr__(self):
 
@@ -142,9 +142,12 @@ class Respondent:
         # asks them to answer the following questions for their previous
         # employer, i.e.: 'Please complete the remaining sections as they relate
         # to the last month of your employment with your previous employer.'
-        self.is_completed_industry_questions = cens['to_complete_industry_questions'] or \
-                                               cens['to_complete_unemployed_questions']
-        self.is_completed_student_questions  = cens['to_complete_student_questions']
+        self.is_completed_industry_questions = (cens['to_complete_industry_questions'] == True) or \
+                                               (cens['to_complete_unemployed_questions'] == True)
+        self.is_completed_student_questions  = cens['to_complete_student_questions'] == True
+
+        self.is_completed_all_questions = self.is_completed_industry_questions or \
+                                            self.is_completed_student_questions
 
         self.census = cens
 
@@ -329,7 +332,7 @@ class Respondent:
         meta = dict()
 
         submit_time = pd.to_datetime(self.df_typ['Submit Date (UTC)'].values[0])
-        start_time = pd.to_datetime(self.df_typ['Start Date (UTC)'].values[0])
+        start_time  = pd.to_datetime(self.df_typ['Start Date (UTC)'].values[0])
 
         meta['submit_time'] = submit_time
         meta['duration_mins'] = (submit_time - start_time).total_seconds() / 60

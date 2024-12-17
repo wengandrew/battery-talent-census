@@ -69,15 +69,16 @@ advantage of both data formats to make our analysis as easy as possible.
 
 The high-level strategy consists of a few parts:
 
-1. Develop a parser to handle survey data.
+1. Develop tools to quickly manipulate census data
   - We'll write a few classes and helper functions in Python to help with this
     task.
   - The goal is to make data handling easier by taking advantage of Python's
     primitive data structures like lists and dictionaries, instead of relying
     solely on a flat, csv-like table structure. This will become more relevant
-    as we define more complex filters and data processing steps (e.g. using an
+    as we define more complex filters and data processing steps (e.g., using an
     LLM to interpret the free-form text responess for some of the questions,
-    handling multi-select multiple choice questions, etc.)
+    handling multi-select multiple choice questions, re-analyzing the data based
+    on pre-defined filters for respondent types).
 
 2.  Develop tools to visualize the data
   - Leverage the parser tools to make this task easier, flexible, and less
