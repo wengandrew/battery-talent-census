@@ -96,8 +96,7 @@ class Respondent:
                 ])
         cens['sentiment'] = sentiment
 
-        skills_demand = self.df_gsh['In your opinion, what are the top three skills most in demand in the battery industry?'].values[0]
-        cens['skills_demand'] = [] if pd.isna(skills_demand) else [x.strip() for x in skills_demand.split(',')]
+        cens['skills_demand'] = self.df_gsh['In your opinion, what are the top three skills most in demand in the battery industry?'].values[0]
 
         skills_value_chain = self.df_gsh['In opinion, which part(s) of the battery value chain are most in need of more skilled workers?'].values[0]
         cens['skills_value_chain'] = [] if pd.isna(skills_value_chain) else [x.strip() for x in skills_value_chain.split(',')]
