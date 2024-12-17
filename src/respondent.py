@@ -15,14 +15,32 @@ class Respondent:
         self.company       = None # company responses (detailed)
         self.student       = None # student responses (detailed)
 
-        self.is_working    = False
-        self.is_student    = False
-        self.is_unemployed = False
+        self.is_working                                = False
+        self.is_working_and_completed_all_questions    = False
+        self.is_student                                = False
+        self.is_student_and_completed_all_questions    = False
+        self.is_unemployed                             = False
+        self.is_unemployed_and_completed_all_questions = False
 
 
     def __repr__(self):
 
-        return f"Respondent {self.respondent_id}"
+        representation      = f'Token:     {self.respondent_id[0::]}' + '\n'
+
+        if self.metadata is not None:
+            representation += f"Submitted: {self.metadata['submit_time']}\n"
+            representation += f"Duration:  {self.metadata['duration_mins']:.2f} minutes\n"
+
+        if self.is_working:
+            representation += f"Status:    Working"
+
+        if self.is_student:
+            representation += f"Status:    Student"
+
+        if self.is_unemployed:
+            representation += f"Status:    Unemployed (laid-off or let go)"
+
+        return representation
 
 
     def set_properties_from_google_sheet(self, df : pd.DataFrame):
@@ -49,6 +67,12 @@ class Respondent:
 
         self.df_gsh = df[df['Token'] == self.respondent_id].copy()
 
+        self.set_census_results_from_google_sheet()
+        self.set_company_results_from_google_sheet()
+        self.set_student_results_from_google_sheet()
+
+
+    def set_census_results_from_google_sheet(self):
         """
         Census Questions
         """
@@ -79,23 +103,30 @@ class Respondent:
         cens['skills_value_chain'] = [] if pd.isna(skills_value_chain) else [x.strip() for x in skills_value_chain.split(',')]
 
         cens['education']      = self.df_gsh['What is your highest level of education?'].values[0]
-        cens['study']          = self.df_gsh['What did you study in school?'].values[0]
+        cens['degree']         = self.df_gsh['What did you study in school?'].values[0]
         cens['country']        = self.df_gsh['What country do you live in?'].values[0]
         cens['zip']            = self.df_gsh['What is your ZIP code or postal code?'].values[0]
         cens['income']         = self.df_gsh['What is your total income over the past 12 months?'].values[0]
         cens['hours_worked']   = self.df_gsh['How many hours did you work last week?'].values[0]
         cens['age']            = self.df_gsh['What is your age?'].values[0]
-        cens['ethnicity']      = self.df_gsh['How would you best describe yourself?'].values[0].split(',')
+
+        ethnicity = self.df_gsh['How would you best describe yourself?'].values[0]
+        cens['ethnicity'] = [] if pd.isna(ethnicity) else [x.strip() for x in ethnicity.split(',')]
+
         cens['gender']         = self.df_gsh['To which gender do you most identify with?'].values[0]
         cens['citizenship']    = self.df_gsh['What is your citizenship status in the country you currently live in?'].values[0]
-        cens['military']       = self.df_gsh['Have you ever served in the military?'].values[0]
-        cens['employment']     = self.df_gsh['What is your current employment situation?'].values[0]
-        self.is_working        = cens['employment'] == "I'm working professionally (e.g., at a company, national lab)"
-        self.is_student        = cens['employment'] == "I'm in school or in training (e.g., a student or postdoc)"
-        self.is_unemployed     = cens['employment'] == "I'm not employed right now but I used to work for a company"
+        cens['military_status']= self.df_gsh['Have you ever served in the military?'].values[0]
+        cens['employment_status'] = self.df_gsh['What is your current employment situation?'].values[0]
+        self.is_working        = cens['employment_status'] == "I'm working professionally (e.g., at a company, national lab)"
+        self.is_student        = cens['employment_status'] == "I'm in school or in training (e.g., a student or postdoc)"
+        self.is_unemployed     = cens['employment_status'] == "I'm not employed right now but I used to work for a company"
         cens['to_complete_industry_questions']   = self.df_gsh["Since you\'re currently working in the industry, we would love to ask you some more detailed questions about your industry experience.\n\nWould you like to complete these additional questions? "].values[0]
         cens['to_complete_student_questions']    = self.df_gsh["Since you\'re a student, we would love to ask you more detailed questions about your student and job searching experience.\n\nWould you like to complete these additional questions? "].values[0]
         cens['to_complete_unemployed_questions'] = self.df_gsh["Since you\'ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed questions about your experience with the previous company and your job-search process.\n\nWould you like to complete these additional questions? "].values[0]
+
+        self.is_working_and_completed_all_questions = cens['to_complete_industry_questions'] == True
+        self.is_student_and_completed_all_questions = cens['to_complete_student_questions'] == True
+        self.is_unemployed_and_completed_all_questions = cens['to_complete_unemployed_questions'] == True
 
         # Those who are working in industry or are employed see the same set of
         # "company" questions; those unemployed see an additional context which
@@ -111,11 +142,12 @@ class Respondent:
         # Why did you leave your previous company?
         cens['why_leave'] = self.df_gsh['Why did you leave your previous company?'].values[0]
 
+
+    def set_company_results_from_google_sheet(self):
         """
         Company questions
         """
         comp = dict()
-
 
         company_satisfaction = dict()
         company_satisfaction['keys'] = [
@@ -233,6 +265,8 @@ class Respondent:
 
         self.company = comp
 
+
+    def set_student_results_from_google_sheet(self):
         """
         Student Questions
         """
@@ -278,12 +312,19 @@ class Respondent:
 
         self.student = stud
 
-        # Submitted At
-        # Token
 
     def set_properties_from_typeform(self, df : pd.DataFrame):
 
         self.df_typ = df[df['#'] == self.respondent_id]
 
+        meta = dict()
+
+        submit_time = pd.to_datetime(self.df_typ['Submit Date (UTC)'].values[0])
+        start_time = pd.to_datetime(self.df_typ['Start Date (UTC)'].values[0])
+
+        meta['submit_time'] = submit_time
+        meta['duration_mins'] = (submit_time - start_time).total_seconds() / 60
+
+        self.metadata = meta
 
 

@@ -67,9 +67,23 @@ advantage of both data formats to make our analysis as easy as possible.
 
 ## Analysis Strategy
 
-We will create an object-oriented representation of a respondent with the survey
-responses being used to assign respondent attributes (e.g., are they a student)
-and their responses. We will then build queries based on these objects.
+The high-level strategy consists of a few parts:
+
+1. Develop a parser to handle survey data.
+  - We'll write a few classes and helper functions in Python to help with this
+    task.
+  - The goal is to make data handling easier by taking advantage of Python's
+    primitive data structures like lists and dictionaries, instead of relying
+    solely on a flat, csv-like table structure. This will become more relevant
+    as we define more complex filters and data processing steps (e.g. using an
+    LLM to interpret the free-form text responess for some of the questions,
+    handling multi-select multiple choice questions, etc.)
+
+2.  Develop tools to visualize the data
+  - Leverage the parser tools to make this task easier, flexible, and less
+    repetitive
+  - Separate plotting aesthetics from data organization tools
+
 
 ## Notes for Future Improvement
 
