@@ -304,20 +304,35 @@ class Analyst:
 
         working_list = self.filter_for_working(respondents_list)
 
-        num_years_with_company = []
+        num_years_with_company_list = []
         company_stage_counter = dict()
         company_vc_counter = dict()
+        company_country_counter = dict()
+        company_state_counter = dict()
+        num_days_in_office_list = []
+        company_headcount_counter = dict()
+        company_team_count_counter = dict()
 
         for respondent in working_list:
-            num_years_with_company.append(respondent.company['company_years_with'])
+            num_years_with_company_list.append(respondent.company['company_years_with'])
             utils.update_dict_counter(company_vc_counter, respondent.company['company_value_chain'])
             utils.update_dict_counter(company_stage_counter, respondent.company['company_stage'])
+            utils.update_dict_counter(company_country_counter, respondent.company['company_country'])
+            utils.update_dict_counter(company_state_counter, respondent.company['company_state'])
+            num_days_in_office_list.append(respondent.company['company_days_in_office'])
+            utils.update_dict_counter(company_headcount_counter, respondent.company['company_headcount'])
+            utils.update_dict_counter(company_team_count_counter, respondent.company['company_team_count'])
 
         res = dict()
-        res['num_years_with_company_median'] = np.nanmedian(num_years_with_company)
-        res['num_years_with_company_list'] = np.array(num_years_with_company)
+        res['num_years_with_company_median'] = np.nanmedian(num_years_with_company_list)
+        res['num_years_with_company_list'] = np.array(num_years_with_company_list)
         res['company_value_chain'] = company_vc_counter
         res['company_stage'] = company_stage_counter
+        res['company_country'] = company_country_counter
+        res['company_state'] = company_state_counter
+        res['num_days_in_office_list'] = np.array(num_days_in_office_list)
+        res['company_headcount'] = company_headcount_counter
+        res['company_team_count'] = company_team_count_counter
 
         return res
 
