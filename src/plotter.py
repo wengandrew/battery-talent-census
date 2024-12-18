@@ -1,5 +1,3 @@
-import pathlib
-
 """
 Plotting utility class.
 
@@ -10,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pathlib
 import numpy as np
+import src.utils as utils
 
 OUTPUT_PATH = 'outputs/'
 
@@ -104,11 +103,11 @@ class Plotter:
         plt.close()
 
 
-    def make_table_plot_from_dictionary(self, this_dict,
-                                        figsize=(10, 8),
-                                        title=None,
-                                        saveas=None
-                                        ):
+    def make_table_plot_from_dict(self, this_dict,
+                                  figsize=(10, 8),
+                                  title=None,
+                                  saveas=None
+                                  ):
         """
         Starting with a dictionary, make a table and plot it.
         """
@@ -144,13 +143,25 @@ class Plotter:
         plt.close()
 
 
-    def make_bar_plot_from_dictionary(self, this_dict,
-                                      figsize=(10, 8),
-                                      title=None,
-                                      num_elements=10,
-                                      saveas=None,
-                                      xlabel='Counts',
-                                      exclusions=[]):
+    def make_bar_plot_from_dict(self, this_dict,
+                                figsize=(10, 8),
+                                title=None,
+                                num_elements=10,
+                                saveas=None,
+                                xlabel='Counts',
+                                exclusions=[],
+                                sorted=False,
+                                replacements=None):
+
+        # Dictionary key replacements for figure aesthetics
+        if replacements is not None:
+            for k, v in replacements.items():
+                if k in this_dict.keys():
+                    this_dict[v] = this_dict.pop(k)
+
+        if sorted:
+            this_dict = utils.sort_dict(this_dict)
+
 
         # Sum up total items before processing
         total_items = sum(this_dict.values())
@@ -172,7 +183,7 @@ class Plotter:
                 counts = counts[:idx] + counts[idx+1:]
 
         # Create a horizontal bar chart
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=figsize)
         plt.barh(labels_new, counts, color='skyblue')
         plt.xlabel(xlabel)
         plt.title(title, loc='center')

@@ -41,16 +41,13 @@ class Analyst:
         # Store the list of responses
         self.respondents_list = []
 
+
     def load_data(self,
                     file_gsheet=FILE_GSHEET,
                     file_typeform=FILE_TYPEFORM):
 
         self.df_gsheet = pd.read_csv(file_gsheet)
         self.df_typeform = pd.read_csv(file_typeform)
-
-
-    def preprocess_data(self):
-        pass
 
 
     def build_respondents_list(self) -> list[Respondent]:
@@ -79,7 +76,7 @@ class Analyst:
                                     citizenship=None,
                                     military_status=None) -> list:
         """
-        Filter the respondents list based on the filter function
+        Generic filter function for extracting a subpopulation of all respondents
 
         Returns a filtered list
         """
@@ -119,6 +116,30 @@ class Analyst:
         )]
 
         return filtered_list
+
+    def filter_for_working(self, respondents_list=None) -> list:
+        """
+        From a given list of respondents, downselect to only those who are
+        working or used to work, and have completed the questions for this
+        section. We do not distinguish between those who are currently working
+        and those who have worked in the past but have since left voluntarily
+        or have been let go (we'll let the user handle this filter manually by
+        specifying the `respondents_list` optional argument).
+
+        Returns a filtered list of respondents
+        """
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = []
+
+        for respondent in respondents_list:
+            if respondent.is_working_and_completed_all_questions or \
+               respondent.is_unemployed_and_completed_all_questions:
+                working_list.append(respondent)
+
+        return working_list
 
 
     def summarize_census_sentiment(self, respondents_list=None) -> dict:
@@ -161,37 +182,15 @@ class Analyst:
             respondents_list = self.respondents_list
 
         skills_in_demand = []
-
         vc_counter = dict()
-        for value in VALUE_CHAIN_MAP.values():
-            vc_counter[value] = 0
-        vc_counter['other'] = 0
-        vc_other_list = []
-
-        vc_counter_raw = dict()
 
         for respondent in respondents_list:
-
             skills_in_demand.append(respondent.census['skills_demand'])
-
-            # Accumulate counts for each part of the value chain selected by the
-            # respondents
-            for vc in respondent.census['skills_value_chain']:
-                if vc in VALUE_CHAIN_MAP.keys():
-                    vc_counter[VALUE_CHAIN_MAP[vc]] += 1
-                # Don't double-count 'mobility)' since this duplicates
-                # entries from 'Product integration (vehicles'; just ignore it
-                elif vc == 'mobility)':
-                    pass
-                else:
-                    vc_counter['other'] += 1
-                    vc_other_list.append(vc)
-
+            utils.update_dict_counter(vc_counter, respondent.census['skills_value_chain'])
 
         res = dict()
         res['skills_in_demand'] = skills_in_demand
-        res['value_chain_in_demand'] = utils.sort_dict(vc_counter)
-        res['value_chain_other_list'] = vc_other_list
+        res['value_chain_in_demand'] = vc_counter
 
         return res
 
@@ -214,58 +213,24 @@ class Analyst:
         military = {}
 
         for respondent in respondents_list:
+            utils.update_dict_counter(degree, respondent.census['degree'])
+            utils.update_dict_counter(country, respondent.census['country'])
+            utils.update_dict_counter(state, respondent.census['state'])
+            utils.update_dict_counter(education, respondent.census['education'])
+            utils.update_dict_counter(ethnicity, respondent.census['ethnicity'])
+            utils.update_dict_counter(gender, respondent.census['gender'])
+            utils.update_dict_counter(citizenship, respondent.census['citizenship'])
+            utils.update_dict_counter(military, respondent.census['military_status'])
 
-            if respondent.census['degree'] in degree.keys():
-                degree[respondent.census['degree']] += 1
-            else:
-                degree[respondent.census['degree']] = 1
-
-            if respondent.census['country'] in country.keys():
-                country[respondent.census['country']] += 1
-            else:
-                country[respondent.census['country']] = 1
-
-            if respondent.census['state'] in state.keys():
-                state[respondent.census['state']] += 1
-            else:
-                state[respondent.census['state']] = 1
-
-            if respondent.census['education'] in education.keys():
-                education[respondent.census['education']] += 1
-            else:
-                education[respondent.census['education']] = 1
-
-            for eth in respondent.census['ethnicity']:
-                if eth in ethnicity.keys():
-                    ethnicity[eth] += 1
-                else:
-                    ethnicity[eth] = 1
-
-            if respondent.census['gender'] in gender.keys():
-                gender[respondent.census['gender']] += 1
-            else:
-                gender[respondent.census['gender']] = 1
-
-            if respondent.census['citizenship'] in citizenship.keys():
-                citizenship[respondent.census['citizenship']] += 1
-            else:
-                citizenship[respondent.census['citizenship']] = 1
-
-            if respondent.census['military_status'] in military.keys():
-                military[respondent.census['military_status']] += 1
-            else:
-                military[respondent.census['military_status']] = 1
-
-        # Bin "nans" with "Decline to answer"
         res = dict()
-        res['degree']           = utils.sort_dict(degree)
-        res['country']          = utils.sort_dict(country)
-        res['state']            = utils.sort_dict(state)
-        res['education']        = utils.sort_dict(education)
-        res['ethnicity']        = utils.sort_dict(ethnicity)
-        res['gender']           = utils.sort_dict(gender)
-        res['citizenship']      = utils.sort_dict(citizenship)
-        res['military_status']  = utils.sort_dict(military)
+        res['degree']           = degree
+        res['country']          = country
+        res['state']            = state
+        res['education']        = education
+        res['ethnicity']        = ethnicity
+        res['gender']           = gender
+        res['citizenship']      = citizenship
+        res['military_status']  = military
 
         return res
 
@@ -275,19 +240,7 @@ class Analyst:
         if respondents_list is None:
             respondents_list = self.respondents_list
 
-        working_list = []
-
-        # Downselect to only those who are working, or have worked, and have
-        # completed the questions for this section. We do not discriminate
-        # those who are currently working and those who have worked in the past
-        # but have since left voluntarily or have been let go (we'll let the
-        # user handle this filter manually by specifying the `respondents_list`
-        # optional argument).
-        for respondent in respondents_list:
-            if respondent.is_working_and_completed_all_questions or \
-               respondent.is_unemployed_and_completed_all_questions:
-                working_list.append(respondent)
-
+        working_list = self.filter_for_working(respondents_list)
         keys = working_list[0].company['company_satisfaction']['keys']
 
         # Build an array of values with rows holding each response and columns
@@ -313,33 +266,100 @@ class Analyst:
 
 
     def summarize_company_salary(self, respondents_list=None) -> dict:
+        """
+        Summarize salary info for those who completed the "Company" questions
+        """
 
-        pass
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = self.filter_for_working(respondents_list)
+
+        salary_base_list = []
+        salary_comp_type_counter = dict()
+        num_raises_counter = dict()
+        num_bonuses_counter = dict()
+
+        for respondent in working_list:
+            salary_base_list.append(respondent.company['salary_base'])
+            utils.update_dict_counter(salary_comp_type_counter, respondent.company['salary_comp_types'])
+            utils.update_dict_counter(num_raises_counter, respondent.company['salary_num_raises'])
+            utils.update_dict_counter(num_bonuses_counter, respondent.company['salary_num_bonuses'])
+
+        res = dict()
+        res['salary_base_median'] = np.nanmedian(salary_base_list)
+        res['salary_base_std']    = np.nanstd(salary_base_list)
+        res['salary_base_list']   = np.array(salary_base_list)
+        res['salary_num_raises']  = num_raises_counter
+        res['salary_num_bonuses'] = num_bonuses_counter
+        res['salary_comp_types']  = utils.sort_dict(salary_comp_type_counter)
+
+        return res
 
 
     def summarize_company_info(self, respondents_list=None) -> dict:
 
-        pass
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = self.filter_for_working(respondents_list)
+
+        num_years_with_company = []
+        company_stage_counter = dict()
+        company_vc_counter = dict()
+
+        for respondent in working_list:
+            num_years_with_company.append(respondent.company['company_years_with'])
+            utils.update_dict_counter(company_vc_counter, respondent.company['company_value_chain'])
+            utils.update_dict_counter(company_stage_counter, respondent.company['company_stage'])
+
+        res = dict()
+        res['num_years_with_company_median'] = np.nanmedian(num_years_with_company)
+        res['num_years_with_company_list'] = np.array(num_years_with_company)
+        res['company_value_chain'] = company_vc_counter
+        res['company_stage'] = company_stage_counter
+
+        return res
 
 
     def summarize_company_role(self, respondents_list=None) -> dict:
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = self.filter_for_working(respondents_list)
 
         pass
 
 
     def summarize_company_skills(self, respondents_list=None) -> dict:
 
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = self.filter_for_working(respondents_list)
+
         pass
 
 
     def summarize_company_retention(self, respondents_list=None) -> dict:
 
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = self.filter_for_working(respondents_list)
+
         pass
+
 
     def summarize_company_benefits(self, respondents_list=None) -> dict:
 
-        pass
+        if respondents_list is None:
+            respondents_list = self.respondents_list
 
+        working_list = self.filter_for_working(respondents_list)
+
+        pass
 
 
     def summarize_stats(self) -> dict:
