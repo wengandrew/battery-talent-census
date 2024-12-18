@@ -8,6 +8,7 @@ Handles all data visualization tasks.
 
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.font_manager as fm
 import pathlib
 import numpy as np
 
@@ -22,7 +23,6 @@ class Plotter:
 
         Style: 'default', 'ieee'
         """
-
         self.set_aesthetics(plt, style)
 
 
@@ -32,9 +32,15 @@ class Plotter:
 
         Style: 'default', 'ieee'
         """
+        # Add font path to 'Inter' - Battery Report font
+        font_path = pathlib.Path(__file__).parent / "fonts" / "Inter.ttf"
+        print(font_path)
+
+        # Add the font
+        fm.fontManager.addfont(str(font_path))
 
         if style == 'default':
-            font = 'Helvetica'
+            font = 'Inter'
         elif style == 'ieee':
             font = 'Times New Roman'
 
