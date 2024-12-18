@@ -185,7 +185,8 @@ class Analyst:
         vc_counter = dict()
 
         for respondent in respondents_list:
-            skills_in_demand.append(respondent.census['skills_demand'])
+            if not pd.isna(respondent.census['skills_demand']):
+                skills_in_demand.append(respondent.census['skills_demand'])
             utils.update_dict_counter(vc_counter, respondent.census['skills_value_chain'])
 
         res = dict()
@@ -298,6 +299,9 @@ class Analyst:
 
 
     def summarize_company_info(self, respondents_list=None) -> dict:
+        """
+        Summarize company info for those who completed the "Company" questions
+        """
 
         if respondents_list is None:
             respondents_list = self.respondents_list
@@ -338,13 +342,42 @@ class Analyst:
 
 
     def summarize_company_role(self, respondents_list=None) -> dict:
+        """
+        Summarize the role of respondents who completed the "Company" questions
+        """
 
         if respondents_list is None:
             respondents_list = self.respondents_list
 
         working_list = self.filter_for_working(respondents_list)
 
-        pass
+        role_title_list = []
+        role_role_counter = dict()
+        role_level_counter = dict()
+        role_why_choose_counter = dict()
+        role_prev_industries_counter = dict()
+        role_prev_role_list = []
+
+        for respondent in working_list:
+
+            if not pd.isna(respondent.company['role_title']):
+                role_title_list.append(respondent.company['role_title'])
+            utils.update_dict_counter(role_role_counter, respondent.company['role_role'])
+            utils.update_dict_counter(role_level_counter, respondent.company['role_level'])
+            utils.update_dict_counter(role_why_choose_counter, respondent.company['role_why_choose'])
+            utils.update_dict_counter(role_prev_industries_counter, respondent.company['role_prev_industries'])
+            if not pd.isna(respondent.company['role_prev_role']):
+                role_prev_role_list.append(respondent.company['role_prev_role'])
+
+        res = dict()
+        res['role_title_list'] = role_title_list
+        res['role_role'] = role_role_counter
+        res['role_level'] = role_level_counter
+        res['role_why_choose'] = role_why_choose_counter
+        res['role_prev_industries'] = role_prev_industries_counter
+        res['role_prev_role_list'] = role_prev_role_list
+
+        return res
 
 
     def summarize_company_skills(self, respondents_list=None) -> dict:

@@ -143,7 +143,7 @@ class Plotter:
         plt.close()
 
 
-    def make_bar_plot_from_dict(self, this_dict,
+    def make_bar_plot_from_dict(self, input_dict,
                                 figsize=(10, 8),
                                 title=None,
                                 num_elements=10,
@@ -152,6 +152,9 @@ class Plotter:
                                 exclusions=[],
                                 sorted=False,
                                 replacements=None):
+
+
+        this_dict = input_dict.copy()
 
         # Dictionary key replacements for figure aesthetics
         if replacements is not None:
@@ -176,11 +179,17 @@ class Plotter:
         # Filter out excluded labels
         exclusion_count = 0
         for exclusion in exclusions:
-            if exclusion in labels_new:
-                exclusion_count += 1
-                idx = labels_new.index(exclusion)
-                labels_new.pop(idx)
-                counts = counts[:idx] + counts[idx+1:]
+            for label, count in zip(labels_new, counts):
+                if exclusion == label:
+                    exclusion_count += 1
+                    idx = labels_new.index(label)
+                    labels_new.pop(idx)
+                    counts = counts[:idx] + counts[idx+1:]
+
+                    # Total count will also be updated. This assumes that the
+                    # exclusions not supposed to be in the dataset to begin with
+                    # (and not merely excluded to suppress them from the plot)
+                    total_items -= count
 
         # Create a horizontal bar chart
         plt.figure(figsize=figsize)

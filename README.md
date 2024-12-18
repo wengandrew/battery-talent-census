@@ -193,6 +193,7 @@ The high-level strategy consists of a few parts:
       < 0.05)
    3. We will need to deal with categorial variables and continuous variables.
       I'm sure there are tools to do this
+   4. I'm not sure if this can be fully automated or it should be handled piecemeal
 
 4. "What affects sentiment?"
 
@@ -216,6 +217,9 @@ The high-level strategy consists of a few parts:
    more relevant (this is the answer to one of the main census questions, not
    from the company section).
 
+6. "How many live in one country but work for a company headquartered in another country?"
+
+
 ## Notes for Census Implementation Improvements
 
 1. For the question "What is your current employment situation?" include options
@@ -224,3 +228,9 @@ The high-level strategy consists of a few parts:
 2. I received a total of 0 emails about census improvment suggestions. Leaving my
    email at the end of the census was not an effective way to solicit feedback.
    What is a better way?
+
+3. Do not use commas in response text, since this will just confuse the string
+   delimiter code during data processing.
+
+4. The question "What was your previous role before joining the battery
+   industry?" should have been "What was the previous industry you worked in?"
