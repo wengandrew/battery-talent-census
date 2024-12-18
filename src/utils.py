@@ -47,3 +47,13 @@ def update_dict_counter(this_dict, key):
             this_dict[key] += 1
         else:
             this_dict[key] = 1
+
+
+def nanappend(this_list, item):
+    """
+    Append an item to a list, but ignore if the item is nan
+    """
+    if pd.isna(item):
+        pass
+    else:
+        this_list.append(item)

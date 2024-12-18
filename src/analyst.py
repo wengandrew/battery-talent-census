@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from collections import defaultdict
 from src.respondent import Respondent as Respondent
 import src.utils as utils
 
@@ -185,8 +186,7 @@ class Analyst:
         vc_counter = dict()
 
         for respondent in respondents_list:
-            if not pd.isna(respondent.census['skills_demand']):
-                skills_in_demand.append(respondent.census['skills_demand'])
+            utils.nanappend(skills_in_demand, respondent.census['skills_demand'])
             utils.update_dict_counter(vc_counter, respondent.census['skills_value_chain'])
 
         res = dict()
@@ -359,15 +359,12 @@ class Analyst:
         role_prev_role_list = []
 
         for respondent in working_list:
-
-            if not pd.isna(respondent.company['role_title']):
-                role_title_list.append(respondent.company['role_title'])
+            utils.nanappend(role_title_list, respondent.company['role_title'])
             utils.update_dict_counter(role_role_counter, respondent.company['role_role'])
             utils.update_dict_counter(role_level_counter, respondent.company['role_level'])
             utils.update_dict_counter(role_why_choose_counter, respondent.company['role_why_choose'])
             utils.update_dict_counter(role_prev_industries_counter, respondent.company['role_prev_industries'])
-            if not pd.isna(respondent.company['role_prev_role']):
-                role_prev_role_list.append(respondent.company['role_prev_role'])
+            utils.nanappend(role_prev_role_list, respondent.company['role_prev_role'])
 
         res = dict()
         res['role_title_list'] = role_title_list
@@ -381,13 +378,53 @@ class Analyst:
 
 
     def summarize_company_skills(self, respondents_list=None) -> dict:
+        """
+        Summarize the questions about job skills from those who completed the
+        "Company" questions
+        """
 
         if respondents_list is None:
             respondents_list = self.respondents_list
 
         working_list = self.filter_for_working(respondents_list)
 
-        pass
+        barriers_to_talent_list = []
+        hardest_to_fill_positions_list = []
+        top_skills_for_success_list = []
+        skills_how_to_improve_counter = dict()
+        skills_how_was_trained_counter = dict()
+        num_previous_internships_counter = dict()
+
+        for respondent in working_list:
+            utils.nanappend(barriers_to_talent_list, respondent.company['opinion_barriers'])
+            utils.nanappend(hardest_to_fill_positions_list, respondent.company['opinion_hardest_to_fill'])
+            utils.nanappend(top_skills_for_success_list, respondent.company['opinion_top_skills'])
+            utils.update_dict_counter(skills_how_to_improve_counter, respondent.company['skills_how_to_improve'])
+            utils.update_dict_counter(skills_how_was_trained_counter, respondent.company['skills_how_was_trained'])
+            utils.update_dict_counter(num_previous_internships_counter, respondent.company['skills_num_internships'])
+
+        # Proces the responses about skills preparedness
+        keys = working_list[0].company['skills_preparedness']['keys']
+        value_array = np.zeros((len(working_list), len(keys)))
+        for i, respondent in enumerate(working_list):
+            value_array[i, :] = respondent.company['skills_preparedness']['values']
+        ress = dict()
+        ress['keys']   = keys
+        ress['values'] = value_array
+        ress['mean']   = np.nanmean(value_array, axis=0)
+        ress['stdev']  = np.nanstd(value_array, axis=0)
+
+        # Package the outputs
+        res = dict()
+        res['barriers_to_talent_list'] = barriers_to_talent_list
+        res['hardest_to_fill_positions_list'] = hardest_to_fill_positions_list
+        res['top_skills_for_success_list'] = top_skills_for_success_list
+        res['skills_how_to_improve'] = skills_how_to_improve_counter
+        res['skills_how_was_trained'] = skills_how_was_trained_counter
+        res['num_previous_internships'] = num_previous_internships_counter
+        res['skills_preparedness_sentiment'] = ress
+
+        return res
 
 
     def summarize_company_retention(self, respondents_list=None) -> dict:
@@ -396,6 +433,8 @@ class Analyst:
             respondents_list = self.respondents_list
 
         working_list = self.filter_for_working(respondents_list)
+
+        retention_factors_counter = dict()
 
         pass
 
@@ -418,13 +457,7 @@ class Analyst:
         """
 
         # Initialize dictionary of counters
-        summary = {'num_total': 0,
-                   'num_working': 0,
-                   'num_working_and_completed_all_questions': 0,
-                   'num_student': 0,
-                   'num_student_and_completed_all_questions': 0,
-                   'num_unemployed': 0,
-                   'num_unemployed_and_completed_all_questions': 0}
+        summary = defaultdict(lambda: 0)
 
         # Initialize lists for tabulating completion times within each subgroup
         working_mins = []
