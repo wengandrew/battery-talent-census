@@ -106,8 +106,10 @@ advantage of both data formats to make our analysis as easy as possible.
 The high-level strategy consists of a few parts:
 
 1. Develop tools to quickly manipulate census data
+
   - We'll write a few classes and helper functions in Python to help with this
     task.
+
   - The goal is to make data handling easier by taking advantage of Python's
     primitive data structures like lists and dictionaries, instead of relying
     solely on a flat, csv-like table structure. This will become more relevant

@@ -161,6 +161,7 @@ class Respondent:
         """
         comp = dict()
 
+        # Satisfaction
         company_satisfaction = dict()
         company_satisfaction['keys'] = [
             'I am satisfied with my compensation',
@@ -173,6 +174,8 @@ class Respondent:
             self.df_gsh['I am satisfied with the raises and/or bonuses I have been receiving'].values[0]
         ])
         comp['company_satisfaction'] = company_satisfaction
+
+        # Salary
         comp['salary_base']          = self.df_gsh['What is your annual base salary?'].values[0]
 
         comp_types = self.df_gsh['Beyond base salary, what additional compensation types do you receive?'].values[0]
@@ -181,6 +184,7 @@ class Respondent:
         comp['salary_num_raises']   = self.df_gsh['How many times have you received a base salary increase over the past 12 months of employment?'].values[0]
         comp['salary_num_bonuses']  = self.df_gsh['How many times have you received a bonus over the past 12 months of employment?'].values[0]
 
+        # Company info
         comp['company_years_with']  = self.df_gsh['How many years have you been with the company?'].values[0]
 
         comp_value_chain = self.df_gsh['Where does the company fall on the battery value chain?'].values[0]
@@ -192,6 +196,9 @@ class Respondent:
         comp['company_days_in_office'] = self.df_gsh['How many days did you work in the office last week?'].values[0]
         comp['company_headcount']   = self.df_gsh['How many employees work at your company?'].values[0]
         comp['company_team_count']  = self.df_gsh['What is the total headcount on your team?'].values[0]
+
+
+        # Role info
         comp['role_title']          = self.df_gsh['What is your current job title?'].values[0]
 
         role_role = self.df_gsh['What does your role involve?'].values[0]
@@ -205,6 +212,7 @@ class Respondent:
         comp['role_prev_industries'] = self.df_gsh['Have you previously worked in other industries?'].values[0]
         comp['role_prev_role']      = self.df_gsh['What was your previous role before joining the battery industry?'].values[0]
 
+        # Skills and preparedness
         skills_preparedness = dict()
         skills_preparedness['keys'] = [
             'After working for 1 week?',
@@ -231,6 +239,7 @@ class Respondent:
         comp['opinion_hardest_to_fill'] = self.df_gsh['In your opinion, which positions are the hardest to fill in your company?'].values[0]
         comp['opinion_barriers']        = self.df_gsh['In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?'].values[0]
 
+        # Retention
         comp['retention_num_employer_changes'] = self.df_gsh['How many times have you changed employers in the last five years?'].values[0]
         comp['retention_is_on_market']  = self.df_gsh['Are you currently seeking new job opportunities?'].values[0]
 
@@ -254,6 +263,7 @@ class Respondent:
 
         comp['retention_misc']      = self.df_gsh['Is there anything else you\'d like to share about what you\'re looking for in your next role?'].values[0]
 
+        # Benefits
         benefits_priorities = dict()
         benefits_priorities['keys'] = ['Mental health support',
                                        'Work-life balance initiatives',

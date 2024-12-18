@@ -135,13 +135,16 @@ class Analyst:
         # as the results for each sentiment question defined by the keys
         value_array = np.zeros((len(respondents_list), len(keys)))
 
+        submit_time = []
         for i, respondent in enumerate(respondents_list):
             value_array[i, :] = respondent.census['sentiment']['values']
+            submit_time.append(respondent.metadata['submit_time'])
 
         res = dict()
 
         res['keys']   = keys
         res['values'] = value_array
+        res['submit_time'] = np.array(submit_time)
 
         # Summary statistics
         res['mean']   = np.nanmean(value_array, axis=0)
@@ -164,6 +167,8 @@ class Analyst:
             vc_counter[value] = 0
         vc_counter['other'] = 0
         vc_other_list = []
+
+        vc_counter_raw = dict()
 
         for respondent in respondents_list:
 
@@ -263,6 +268,78 @@ class Analyst:
         res['military_status']  = utils.sort_dict(military)
 
         return res
+
+
+    def summarize_company_satisfaction(self, respondents_list=None) -> dict:
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        working_list = []
+
+        # Downselect to only those who are working, or have worked, and have
+        # completed the questions for this section. We do not discriminate
+        # those who are currently working and those who have worked in the past
+        # but have since left voluntarily or have been let go (we'll let the
+        # user handle this filter manually by specifying the `respondents_list`
+        # optional argument).
+        for respondent in respondents_list:
+            if respondent.is_working_and_completed_all_questions or \
+               respondent.is_unemployed_and_completed_all_questions:
+                working_list.append(respondent)
+
+        keys = working_list[0].company['company_satisfaction']['keys']
+
+        # Build an array of values with rows holding each response and columns
+        # as the results for each sentiment question defined by the keys
+        value_array = np.zeros((len(working_list), len(keys)))
+
+        submit_time = []
+        for i, respondent in enumerate(working_list):
+            value_array[i, :] = respondent.company['company_satisfaction']['values']
+            submit_time.append(respondent.metadata['submit_time'])
+
+        res = dict()
+
+        res['keys']   = keys
+        res['values'] = value_array
+        res['submit_time'] = np.array(submit_time)
+
+        # Summary statistics
+        res['mean']   = np.nanmean(value_array, axis=0)
+        res['stdev']  = np.nanstd(value_array, axis=0)
+
+        return res
+
+
+    def summarize_company_salary(self, respondents_list=None) -> dict:
+
+        pass
+
+
+    def summarize_company_info(self, respondents_list=None) -> dict:
+
+        pass
+
+
+    def summarize_company_role(self, respondents_list=None) -> dict:
+
+        pass
+
+
+    def summarize_company_skills(self, respondents_list=None) -> dict:
+
+        pass
+
+
+    def summarize_company_retention(self, respondents_list=None) -> dict:
+
+        pass
+
+    def summarize_company_benefits(self, respondents_list=None) -> dict:
+
+        pass
+
 
 
     def summarize_stats(self) -> dict:
