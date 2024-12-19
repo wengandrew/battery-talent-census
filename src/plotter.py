@@ -8,10 +8,16 @@ Handles all data visualization tasks.
 
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.font_manager as fm
 import pathlib
 import numpy as np
 
 OUTPUT_PATH = 'outputs/'
+VF_BLUE_DARK = '#00224e'
+VF_BLUE = '#0056c4'
+VF_BLUE_LIGHT = '#3292fb'
+VF_LIGHT = '#9fcaf8'
+VF_YELLOW = '#fbaf00'
 
 class Plotter:
 
@@ -22,7 +28,7 @@ class Plotter:
 
         Style: 'default', 'ieee'
         """
-
+        
         self.set_aesthetics(plt, style)
 
 
@@ -33,8 +39,15 @@ class Plotter:
         Style: 'default', 'ieee'
         """
 
+        # Add font path to 'Inter' - Battery Report font
+        font_path = pathlib.Path(__file__).parent / "fonts" / "Inter.ttf"
+        print(font_path)
+
+        # Add the font
+        fm.fontManager.addfont(str(font_path))
+
         if style == 'default':
-            font = 'Helvetica'
+            font = 'Inter'
         elif style == 'ieee':
             font = 'Times New Roman'
 
@@ -173,7 +186,7 @@ class Plotter:
 
         # Create a horizontal bar chart
         plt.figure(figsize=(10, 6))
-        plt.barh(labels_new, counts, color='skyblue')
+        plt.barh(labels_new, counts, color=VF_LIGHT)
         plt.xlabel(xlabel)
         plt.title(title, loc='center')
         plt.gca().invert_yaxis()  # Invert y-axis to have the highest count on top
