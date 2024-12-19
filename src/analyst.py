@@ -428,6 +428,10 @@ class Analyst:
 
 
     def summarize_company_retention(self, respondents_list=None) -> dict:
+        """
+        Summarize the questions about retention from those who completed the
+        "Company" section
+        """
 
         if respondents_list is None:
             respondents_list = self.respondents_list
@@ -435,8 +439,34 @@ class Analyst:
         working_list = self.filter_for_working(respondents_list)
 
         retention_factors_counter = dict()
+        retention_is_on_market_counter = dict()
+        retention_misc_list = []
+        retention_num_employer_changes = dict()
 
-        pass
+        for respondent in working_list:
+            utils.update_dict_counter(retention_factors_counter, respondent.company['retention_factors'])
+            utils.update_dict_counter(retention_is_on_market_counter, respondent.company['retention_is_on_market'])
+            utils.nanappend(retention_misc_list, respondent.company['retention_misc'])
+            utils.update_dict_counter(retention_num_employer_changes, respondent.company['retention_num_employer_changes'])
+
+        keys = working_list[0].company['retention_sentiment']['keys']
+        value_array = np.zeros((len(working_list), len(keys)))
+        for i, respondent in enumerate(working_list):
+            value_array[i, :] = respondent.company['retention_sentiment']['values']
+        ress = dict()
+        ress['keys']   = keys
+        ress['values'] = value_array
+        ress['mean']   = np.nanmean(value_array, axis=0)
+        ress['stdev']  = np.nanstd(value_array, axis=0)
+
+        res = dict()
+        res['retention_factors'] = retention_factors_counter
+        res['retention_is_on_market'] = retention_is_on_market_counter
+        res['retention_misc_list'] = retention_misc_list
+        res['retention_num_employer_changes'] = retention_num_employer_changes
+        res['retention_sentiment'] = ress
+
+        return res
 
 
     def summarize_company_benefits(self, respondents_list=None) -> dict:
@@ -446,7 +476,40 @@ class Analyst:
 
         working_list = self.filter_for_working(respondents_list)
 
-        pass
+        entitlements = dict()
+        parental_leave_weeks = dict()
+        pto_weeks = dict()
+        sick_leave_days = dict()
+        unique_benefits_list = []
+
+        for respondent in working_list:
+            utils.update_dict_counter(entitlements, respondent.company['benefits_entitlements'])
+            utils.update_dict_counter(parental_leave_weeks, respondent.company['benefits_parental_leave_weeks'])
+            utils.update_dict_counter(pto_weeks, respondent.company['benefits_pto_weeks'])
+            utils.update_dict_counter(sick_leave_days, respondent.company['benefits_sick_leave_days'])
+            utils.nanappend(unique_benefits_list, respondent.company['benefits_unique'])
+
+        # Process the benefits proprities survey
+        keys = working_list[0].company['benefits_priorities']['keys']
+        value_array = np.zeros((len(working_list), len(keys)))
+        for i, respondent in enumerate(working_list):
+            value_array[i, :] = respondent.company['benefits_priorities']['values']
+        ress = dict()
+        ress['keys']   = keys
+        ress['values'] = value_array
+        ress['mean']   = np.nanmean(value_array, axis=0)
+        ress['stdev']  = np.nanstd(value_array, axis=0)
+
+        # Package the outputs
+        res = dict()
+        res['entitlements'] = entitlements
+        res['parental_leave_weeks'] = parental_leave_weeks
+        res['pto_weeks'] = pto_weeks
+        res['sick_leave_days'] = sick_leave_days
+        res['unique_benefits_list'] = unique_benefits_list
+        res['benefits_priorities'] = ress
+
+        return res
 
 
     def summarize_stats(self) -> dict:

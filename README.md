@@ -217,13 +217,21 @@ The high-level strategy consists of a few parts:
    more relevant (this is the answer to one of the main census questions, not
    from the company section).
 
-6. "How many live in one country but work for a company headquartered in another country?"
+6. "How many live in one country but work for a company headquartered in another
+   country?"
+
+7. Build a NLP processor function for the free-form response questions. Use
+   o1-preview; ask it to define categories based on the responses, and count the
+   number of responses within each category. Ask it to return the response in a
+   structured way, like in a Python dictionary
 
 
 ## Notes for Census Implementation Improvements
 
+Some tips for future self...
+
 1. For the question "What is your current employment situation?" include options
-   for "business owner", "self-employed", "consulting", "founder."
+   for "business owner", "self-employed", "consulting", "founder", etc.
 
 2. I received a total of 0 emails about census improvment suggestions. Leaving my
    email at the end of the census was not an effective way to solicit feedback.
@@ -233,4 +241,9 @@ The high-level strategy consists of a few parts:
    delimiter code during data processing.
 
 4. The question "What was your previous role before joining the battery
-   industry?" should have been "What was the previous industry you worked in?"
+   industry?" should have been "What was the previous industry you worked in?" A
+   missed opportunity!
+
+5. In the question "If you were offered a similar role with a different company,
+   what factors would influence your decision to accept the offer", we missed
+   the option "Location", which is different from "Work location flexibility."

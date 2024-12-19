@@ -175,6 +175,8 @@ class Plotter:
         # Handle nans
         labels_new = ['nan' if x is np.nan else x for x in labels]
         labels_new = ['None' if x is None else x for x in labels_new]
+        labels_new = ['False' if x is False else x for x in labels_new]
+        labels_new = ['True' if x is True else x for x in labels_new]
 
         # Filter out excluded labels
         exclusion_count = 0
@@ -208,9 +210,14 @@ class Plotter:
              ha='right', va='bottom', fontsize=10,
              style='italic', color='gray')
 
-        # Add text labels
-        for i, v in enumerate(counts):
-            plt.text(v, i, f' {v:,}', va='center')
+        # Add text labels; figure out the logic for numeric labels later;
+        # this only works for categorical labels where the y-values auto-increment
+        all_numeric = all(isinstance(label, (int, float)) for label in labels_new)
+        if all_numeric:
+            pass
+        else:
+            for i, v in enumerate(counts):
+                plt.text(v, i, f' {v:,}', va='center')
 
         if saveas is not None:
             plt.savefig(str(pathlib.Path(OUTPUT_PATH) / saveas))
