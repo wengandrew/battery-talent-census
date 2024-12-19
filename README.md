@@ -11,27 +11,31 @@ Want to contribute? Do the following:
 1. `git clone` this repository to your local computer, or set up a GitHub
    codespace to the same effect.
 
-2. Set up your virtual environment and install the requirements. I'm running
+1. Set up your virtual environment and install the requirements. I'm running
    this on Python 3.13.1.
 
-  - Initialize the virtual environment:
-```
+Initialize the virtual environment:
+
+```bash
 python -m venv venv
 ```
 
-  - Now activate it.
-  ```
-  source venv/bin/acivate
-   ```
+Now activate it.
 
-  - Make sure it worked by checking your python command references the correct
-    instance of `python`
+```bash
+source venv/bin/acivate
 ```
+
+Make sure it worked by checking your python command references the correct
+    instance of `python`
+
+```bash
 which python
 ```
 
-   - Install requirements.
-```
+Install requirements.
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -119,6 +123,7 @@ The high-level strategy consists of a few parts:
     on pre-defined filters for respondent types).
 
 2.  Develop tools to visualize the data
+
   - Leverage the parser tools to make this task easier, flexible, and less
     repetitive
   - Separate plotting aesthetics from data organization tools
@@ -129,21 +134,116 @@ The high-level strategy consists of a few parts:
 
 - Data pertaining to each respondent is handled by the `Respondent` class.
 
-### Level 2: Analysis
+### Level 2: Analysis Utility
 
-- Data pertaining to each analysis, which consists of multiple `Respondent`s, is
-  handled by the `Analyst` class.
+- Aggregating and summarizing data from all of the `Respondents` is handled by
+  the `Analyst` class.
 
 ### Level 3: Visualization
 
-- This is a work in progress
+- Data visualization utilities are handled by `Plotter`
+
+### Level 4: Analysis
+
+- Where the analysis results are defined; we'll use Jupyter notebooks for this.
+  The notebooks will leverage all of the tools from the previous levels to
+  complete the analysis.
 
 
-## Notes for Future Improvement
+## To-Do's
+
+1. Compare how the following groups respond to the questions about which skills
+   are in most demand and which parts of the value chain needs the most skilled
+   workers:
+     1. Students
+     2. Professionals (not managers or directors)
+     3. Professionals (managers or directors)
+   Visualize this result by a line chart with rank-ordered y axis values
+   comparing between the different respondent groups expressed on the x axis.
+
+2. "What parts of the value chain do respondents think require more skilled
+   workers vs which part of the value chain does the respondent represent?"
+   I.e., does everyone just think their own field needs more skilled workers,
+   and are there some parts of the value chain where everyone agrees needs
+   more skilled workers? Making this plot helps interpret respondent
+   representation bias.
+
+3. I'd like to study whether there are correlations between every combination of
+   the following variables:
+
+   - gender
+   - country
+   - ethnicity
+   - value chain segment
+   - role/seniority
+   - sentiment metrics
+   - company satisfaction metrics
+   - pay
+
+   Some of the comparisons will be more meaningful than others, but doing a
+   "full factorial" study will help ensure we search for any and all
+   correlations if available.
+
+   Notes:
+
+   1. With each comparison, we should try to control for the effect of other
+      variables where possible.
+   2. We need to do statistical tests to figure out which correlations are
+      statistcally significant within some standard confidence interval (e.g., p
+      < 0.05)
+   3. We will need to deal with categorial variables and continuous variables.
+      I'm sure there are tools to do this
+   4. I'm not sure if this can be fully automated or it should be handled piecemeal
+
+4. "What affects sentiment?"
+
+   As a variant of (3), we could define a method that evaluates the
+   statistical significance of sentiment metrics comparing between two
+   subpopulations. The statistical test we can use is the standard t-test to
+   evaluate whether the mean of two populations are the same. There are a number
+   of ways to code up the solution, but one way is to define a method that takes
+   in two lists of `Respondent`s, crunches the numbers for each list, and runs
+   the statistical test. To define the two populations, we can use a number of
+   filters, including pay, gender, country, value chain segment, role/seniority,
+   before/after the November elections.
+
+5. "Are you really being underpaid?"
+
+   We asked respondents whether they feel they are being underpaid compared to
+   similar roles. There's an empirical way to test this. First, filter for role
+   type and seniority. Then, make a correlation plot with the x-axis being the
+   respondent sentiment (1-5) and the y-axis is their pay. For the pay, we
+   should look at base pay and total salary separately. Total salary is probably
+   more relevant (this is the answer to one of the main census questions, not
+   from the company section).
+
+6. "How many live in one country but work for a company headquartered in another
+   country?"
+
+7. Build a NLP processor function for the free-form response questions. Use
+   o1-preview; ask it to define categories based on the responses, and count the
+   number of responses within each category. Ask it to return the response in a
+   structured way, like in a Python dictionary
+
+
+## Notes for Census Implementation Improvements
+
+Some tips for future self...
 
 1. For the question "What is your current employment situation?" include options
-   for "business owner", "self-employed", "consulting", "founder."
+   for "business owner", "self-employed", "consulting", "founder", etc.
 
 2. I received a total of 0 emails about census improvment suggestions. Leaving my
    email at the end of the census was not an effective way to solicit feedback.
    What is a better way?
+
+3. Do not use commas in response text, since this will just confuse the string
+   delimiter code during data processing.
+
+4. The question "What was your previous role before joining the battery
+   industry?" should have been "What was the previous industry you worked in?" A
+   missed opportunity!
+
+5. In the question "If you were offered a similar role with a different company,
+   what factors would influence your decision to accept the offer", we missed
+   the option "Location", which is different from "Work location flexibility."
