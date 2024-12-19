@@ -28,6 +28,7 @@ class Plotter:
 
         Style: 'default', 'ieee'
         """
+        
         self.set_aesthetics(plt, style)
 
 
@@ -37,7 +38,7 @@ class Plotter:
 
         Style: 'default', 'ieee'
         """
-        
+
         # Add font path to 'Inter' - Battery Report font
         font_path = pathlib.Path(__file__).parent / "fonts" / "Inter.ttf"
         print(font_path)
