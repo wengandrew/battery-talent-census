@@ -162,36 +162,32 @@ class Plotter:
                 if k in this_dict.keys():
                     this_dict[v] = this_dict.pop(k)
 
+        # Peroform the sort
         if sorted:
             this_dict = utils.sort_dict(this_dict)
-
-
-        # Sum up total items before processing
-        total_items = sum(this_dict.values())
 
         data = list(this_dict.items())[:num_elements]
         labels, counts = zip(*data)
 
-        # Handle nans
+        # Keep things in strings instead of floats
         labels_new = ['nan' if x is np.nan else x for x in labels]
         labels_new = ['None' if x is None else x for x in labels_new]
         labels_new = ['False' if x is False else x for x in labels_new]
         labels_new = ['True' if x is True else x for x in labels_new]
 
-        # Filter out excluded labels
-        exclusion_count = 0
-        for exclusion in exclusions:
-            for label, count in zip(labels_new, counts):
-                if exclusion == label:
-                    exclusion_count += 1
-                    idx = labels_new.index(label)
-                    labels_new.pop(idx)
-                    counts = counts[:idx] + counts[idx+1:]
+        # Handle exclusions
+        filtered_data = [(label, count) \
+                         for label, count in zip(labels_new, counts) \
+                         if label not in exclusions]
 
-                    # Total count will also be updated. This assumes that the
-                    # exclusions not supposed to be in the dataset to begin with
-                    # (and not merely excluded to suppress them from the plot)
-                    total_items -= count
+        # Check if there is any data left after filtering
+        if filtered_data:
+            labels_new, counts = zip(*filtered_data)
+        else:
+            labels_new, counts = [], []
+
+        # Recalculate the total items after exclusions
+        total_items = sum(counts)
 
         # Create a horizontal bar chart
         plt.figure(figsize=figsize)
@@ -203,7 +199,7 @@ class Plotter:
         # Add annotation for num_elements
         plt.text(0.95, 0.05,
                  f"""
-                 Up to {num_elements - exclusion_count} elements shown.
+                 Up to {num_elements - len(exclusions)} elements shown.
                  Total count: {total_items}
                  """,
              transform=plt.gca().transAxes,
