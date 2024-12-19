@@ -165,8 +165,13 @@ class Plotter:
                                 sorted=False,
                                 replacements=None):
 
-
         this_dict = input_dict.copy()
+
+        # Extract info on the total number of respondents
+        if '_tot_' in this_dict.keys():
+            total_respondents = this_dict['_tot_']
+        else:
+            total_respondents = np.nan
 
         # Dictionary key replacements for figure aesthetics
         if replacements is not None:
@@ -174,11 +179,11 @@ class Plotter:
                 if k in this_dict.keys():
                     this_dict[v] = this_dict.pop(k)
 
-        # Peroform the sort
+        # Perform the sort
         if sorted:
             this_dict = utils.sort_dict(this_dict)
 
-        data = list(this_dict.items())[:num_elements]
+        data = list(this_dict.items())
         labels, counts = zip(*data)
 
         # Keep things in strings instead of floats
@@ -187,7 +192,11 @@ class Plotter:
         labels_new = ['False' if x is False else x for x in labels_new]
         labels_new = ['True' if x is True else x for x in labels_new]
 
-        # Handle exclusions
+        # Always exclude the '_tot_' key from the plot and the analysis
+        # as it is a special key only meant for tracking the total number
+        # of respondents
+        exclusions.append('_tot_')
+
         filtered_data = [(label, count) \
                          for label, count in zip(labels_new, counts) \
                          if label not in exclusions]
@@ -198,26 +207,30 @@ class Plotter:
         else:
             labels_new, counts = [], []
 
-        # Recalculate the total items after exclusions
-        total_items = sum(counts)
-
         # Create a horizontal bar chart
         this_figsize = figsize if figsize is not None else \
-            (6, 0.5 * (num_elements - len(exclusions)))
-        plt.figure(figsize=this_figsize)
-        plt.barh(labels_new, counts, color=VF_BLUE_DARK)
-        plt.xlabel(xlabel)
-        plt.title(title, loc='center')
-        plt.gca().invert_yaxis()  # Invert y-axis to have the highest count on top
+            (6, 0.5 * len(labels_new[:num_elements]) + 1.5)
 
-        # Add annotation for num_elements
-        plt.text(0.95, 0.05,
+        plt.figure(figsize=this_figsize)
+        plt.barh(labels_new[:num_elements], counts[:num_elements],
+                 color=VF_BLUE_DARK)
+
+        # Make room for the labels
+        plt.xlim(right=plt.gca().get_xlim()[1] * 1.15)
+
+        plt.xlabel(xlabel)
+        plt.suptitle(title, x=0.02, y=0.98, ha='left')
+        plt.gca().invert_yaxis()
+
+        # Add annotations
+        plt.text(1.00, -0.08,
                  f"""
-                 Up to {num_elements - len(exclusions)} elements shown.
-                 Total count: {total_items}
+                 Up to {num_elements} elements displayed.
+                 Total responses: {sum(counts)}
+                 Total respondents: {total_respondents}
                  """,
              transform=plt.gca().transAxes,
-             ha='right', va='bottom', fontsize=10,
+             ha='right', va='top', fontsize=10,
              style='italic', color='gray')
 
         # Add text labels; figure out the logic for numeric labels later;
@@ -226,7 +239,7 @@ class Plotter:
         if all_numeric:
             pass
         else:
-            for i, v in enumerate(counts):
+            for i, v in enumerate(counts[:num_elements]):
                 plt.text(v, i, f' {v:,}', va='center')
 
         if saveas is not None:
