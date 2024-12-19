@@ -39,8 +39,7 @@ class Plotter:
         """
 
         # Add font path to 'Inter' - Battery Report font
-        font_path = pathlib.Path(__file__).parent / "fonts" / "Inter.ttf"
-        print(font_path)
+        font_path = pathlib.Path(__file__).parent.parent / "data" / "fonts" / "Inter.ttf"
 
         # Add the font
         fm.fontManager.addfont(str(font_path))
@@ -157,7 +156,7 @@ class Plotter:
 
 
     def make_bar_plot_from_dict(self, input_dict,
-                                figsize=(10, 8),
+                                figsize=None,
                                 title=None,
                                 num_elements=10,
                                 saveas=None,
@@ -203,8 +202,10 @@ class Plotter:
         total_items = sum(counts)
 
         # Create a horizontal bar chart
-        plt.figure(figsize=figsize)
-        plt.barh(labels_new, counts, color='skyblue')
+        this_figsize = figsize if figsize is not None else \
+            (6, 0.5 * (num_elements - len(exclusions)))
+        plt.figure(figsize=this_figsize)
+        plt.barh(labels_new, counts, color=VF_BLUE_DARK)
         plt.xlabel(xlabel)
         plt.title(title, loc='center')
         plt.gca().invert_yaxis()  # Invert y-axis to have the highest count on top
