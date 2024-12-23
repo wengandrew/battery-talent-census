@@ -679,5 +679,35 @@ class Analyst:
 
         return res
 
+    def summarize_student_internship(self, respondents_list=None) -> dict:
+        """
+        Summarize students' internship experience for those who completed the "Student" questions
+        """
 
+        if respondents_list is None:
+            respondents_list = self.respondents_list
 
+        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+
+        num_internships_counter = dict()
+        internship_vc_counter = dict()
+        internship_role_counter = dict()
+        internship_hourly_pay_list = []
+        internship_hours_per_week_list = []
+        # to be implemented with LLM: vc, role, skills
+
+        for respondent in student_list:
+            utils.update_dict_counter(num_internships_counter, respondent.student['num_internships'])
+            utils.update_dict_counter(internship_vc_counter, respondent.student['internship_value_chain'])
+            utils.update_dict_counter(internship_role_counter, respondent.student['internship_role'])
+            utils.nanappend(internship_hourly_pay_list, respondent.student['internship_hourly_pay'])
+            utils.nanappend(internship_hours_per_week_list, respondent.student['internship_hours_per_week'])
+        
+        res = dict()
+        res['num_internships'] = num_internships_counter
+        res['internship_value_chain'] = internship_vc_counter
+        res['internship_role'] = internship_role_counter
+        res['internship_hourly_pay_list'] = np.array(internship_hourly_pay_list)
+        res['internship_hours_per_week_list'] = np.array(internship_hours_per_week_list)
+
+        return res
