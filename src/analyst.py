@@ -583,4 +583,101 @@ class Analyst:
         summary['response_by_time_num'] = np.arange(1, self.df_gsheet.shape[0] + 1)
 
         return summary
+    
+    def summarize_student_sentiment(self, respondents_list=None) -> dict:
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+        keys = student_list[0].student['student_sentiment']['keys']
+
+        # Build an array of values with rows holding each response and columns
+        # as the results for each sentiment question defined by the keys
+        value_array = np.zeros((len(student_list), len(keys)))
+
+        submit_time = []
+        for i, respondent in enumerate(student_list):
+            value_array[i, :] = respondent.student['student_sentiment']['values']
+            submit_time.append(respondent.metadata['submit_time'])
+
+        res = dict()
+
+        res['keys']   = keys
+        res['values'] = value_array
+        res['submit_time'] = np.array(submit_time)
+
+        # Summary statistics
+        res['mean']   = np.nanmean(value_array, axis=0)
+        res['stdev']  = np.nanstd(value_array, axis=0)
+
+        return res
+    
+    def summarize_student_backgrounds(self, respondents_list=None) -> dict:
+        """
+        Return summary of respondent's backgrounds
+        """
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+
+        degree = {}
+        country = {}
+        state = {}
+        education = {}
+
+        for respondent in student_list:
+            utils.update_dict_counter(degree, respondent.student['degree'])
+            utils.update_dict_counter(country, respondent.student['country'])
+            utils.update_dict_counter(state, respondent.student['state'])
+            utils.update_dict_counter(education, respondent.student['education'])
+        
+        res = dict()
+        res['degree']           = degree
+        res['country']          = country
+        res['state']            = state
+        res['education']        = education
+
+        return res
+
+    def summarize_student_ideal(self, respondents_list=None) -> dict:
+        """
+        Summarize students' ideal career for those who completed the "Student" questions
+        """
+
+        if respondents_list is None:
+            respondents_list = self.respondents_list
+
+        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+
+        # needs LLM for job title
+        # ideal_job_title_list = []
+
+        # building other summary for now
+        ideal_vc_counter = dict()
+        ideal_job_aspects_counter = dict()
+        ideal_salary_list = []
+
+        for respondent in student_list:
+            # utils.nanappend(ideal_job_title_list, respondent.student['ideal_job_title'])
+            utils.update_dict_counter(ideal_vc_counter, respondent.student['ideal_value_chain'])
+            utils.update_dict_counter(ideal_job_aspects_counter, respondent.student['ideal_job_aspects'])
+            utils.nanappend(ideal_salary_list, respondent.student['ideal_salary'])
+
+        res = dict()
+        # res['ideal_job_title_list'] = ideal_job_title_list
+        res['ideal_value_chain'] = ideal_vc_counter
+        res['ideal_job_aspects'] = ideal_job_aspects_counter
+        res['ideal_salary_list'] = np.array(ideal_salary_list)
+
+        # these numbers aren't very good... may need to manually pick out outliers
+        res['ideal_salary_median'] = np.nanmedian(ideal_salary_list)
+        res['ideal_salary_mean'] = np.nanmean(ideal_salary_list)
+        res['ideal_salary_std'] = np.nanstd(ideal_salary_list)
+
+        return res
+
+
 
