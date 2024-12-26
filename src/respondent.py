@@ -348,5 +348,3 @@ class Respondent:
         meta['duration_mins'] = (submit_time - start_time).total_seconds() / 60
 
         self.metadata = meta
-
-
