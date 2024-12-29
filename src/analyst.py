@@ -652,22 +652,19 @@ class Analyst:
 
         student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
 
-        # needs LLM for job title
-        # ideal_job_title_list = []
-
-        # building other summary for now
+        ideal_job_title_list = []
         ideal_vc_counter = dict()
         ideal_job_aspects_counter = dict()
         ideal_salary_list = []
 
         for respondent in student_list:
-            # utils.nanappend(ideal_job_title_list, respondent.student['ideal_job_title'])
+            utils.nanappend(ideal_job_title_list, respondent.student['ideal_job_title'])
             utils.update_dict_counter(ideal_vc_counter, respondent.student['ideal_value_chain'])
             utils.update_dict_counter(ideal_job_aspects_counter, respondent.student['ideal_job_aspects'])
             utils.nanappend(ideal_salary_list, respondent.student['ideal_salary'])
 
         res = dict()
-        # res['ideal_job_title_list'] = ideal_job_title_list
+        res['ideal_job_title_list'] = ideal_job_title_list
         res['ideal_value_chain'] = ideal_vc_counter
         res['ideal_job_aspects'] = ideal_job_aspects_counter
         res['ideal_salary_list'] = np.array(ideal_salary_list)
@@ -678,6 +675,7 @@ class Analyst:
         res['ideal_salary_std'] = np.nanstd(ideal_salary_list)
 
         return res
+
 
     def summarize_student_internship(self, respondents_list=None) -> dict:
         """
@@ -692,14 +690,25 @@ class Analyst:
         num_internships_counter = dict()
         internship_vc_counter = dict()
         internship_role_counter = dict()
+        internship_vc_list = []
+        internship_role_list = []
+        internship_top_skills_list = []
+        internship_skills_wish_learned_list = []
+        internship_skills_unprepared_list = []
         internship_hourly_pay_list = []
         internship_hours_per_week_list = []
+
         # to be implemented with LLM: vc, role, skills
 
         for respondent in student_list:
             utils.update_dict_counter(num_internships_counter, respondent.student['num_internships'])
             utils.update_dict_counter(internship_vc_counter, respondent.student['internship_value_chain'])
             utils.update_dict_counter(internship_role_counter, respondent.student['internship_role'])
+            utils.nanappend(internship_vc_list, respondent.student['internship_value_chain'])
+            utils.nanappend(internship_role_list, respondent.student['internship_role'])
+            utils.nanappend(internship_top_skills_list, respondent.student['internship_top_skills'])
+            utils.nanappend(internship_skills_wish_learned_list, respondent.student['internship_skills_wish_learned'])
+            utils.nanappend(internship_skills_unprepared_list, respondent.student['internship_skills_unprepared'])
             utils.nanappend(internship_hourly_pay_list, respondent.student['internship_hourly_pay'])
             utils.nanappend(internship_hours_per_week_list, respondent.student['internship_hours_per_week'])
         
@@ -707,6 +716,11 @@ class Analyst:
         res['num_internships'] = num_internships_counter
         res['internship_value_chain'] = internship_vc_counter
         res['internship_role'] = internship_role_counter
+        res['internship_value_chain_list'] = internship_vc_list
+        res['internship_role_list'] = internship_role_list
+        res['internship_top_skills_list'] = internship_top_skills_list
+        res['internship_skills_wish_learned_list'] = internship_skills_wish_learned_list
+        res['internship_skills_unprepared_list'] = internship_skills_unprepared_list
         res['internship_hourly_pay_list'] = np.array(internship_hourly_pay_list)
         res['internship_hours_per_week_list'] = np.array(internship_hours_per_week_list)
 
