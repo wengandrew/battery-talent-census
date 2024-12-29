@@ -225,6 +225,7 @@ class Plotter:
                                 xlabel='Counts',
                                 exclusions=[],
                                 sorted=False,
+                                annotation=False,
                                 replacements=None):
 
         this_dict = input_dict.copy()
@@ -271,7 +272,7 @@ class Plotter:
 
         # Create a horizontal bar chart
         this_figsize = figsize if figsize is not None else \
-            (6, 0.5 * len(labels_new[:num_elements]) + 1.5)
+            (8, 0.25 * len(labels_new[:num_elements]) + 1.5)
 
         plt.figure(figsize=this_figsize)
         plt.barh(labels_new[:num_elements], counts[:num_elements],
@@ -284,16 +285,23 @@ class Plotter:
         plt.suptitle(title, x=0.02, y=0.98, ha='left')
         plt.gca().invert_yaxis()
 
-        # Add annotations
-        plt.text(1.00, -0.08,
-                 f"""
-                 Up to {num_elements} elements displayed.
+        if num_elements < len(labels_new):
+            num_elem_annotation = f"{num_elements}/{len(labels_new)} elements displayed"
+        else:
+            num_elem_annotation = f"All elements displayed"
+
+        annotation_str = f"""
+                 {num_elem_annotation}
                  Total responses: {sum(counts)}
                  Total respondents: {total_respondents}
-                 """,
-             transform=plt.gca().transAxes,
-             ha='right', va='top', fontsize=10,
-             style='italic', color='gray')
+                 """
+        if annotation is not False:
+            annotation_str += f'{annotation}'
+
+        plt.annotate(annotation_str,
+                 xy=(0.96, 0.02), xycoords='axes fraction', fontsize=10,
+                 ha='right', va='bottom', color='gray'
+                 )
 
         # Add text labels; figure out the logic for numeric labels later;
         # this only works for categorical labels where the y-values auto-increment
