@@ -116,6 +116,157 @@ class LLM:
         return output_dict, counter_dict
 
 
+    def delimit_string_of_list(self, string_of_list):
+        """
+        Delimit a string that represents a list of strings.
+
+        For example, if the input is any of the following:
+        ['a; b; c']
+        ['[a] [b] [c]']
+        ['a, b, c']
+        ['skill 1: a, skill 2: b, skill 3: c']
+
+        The response should be:
+        ['a', 'b', 'c']
+
+        Parameters
+        ----------
+        string_of_list : str
+            string that represents a list of strings
+
+        Returns
+        -------
+        list_of_strings : list
+        """
+
+        sys_prompt = f"""
+        You are a helpful text analyzer.
+
+        I will provide you with a string of text which contains keywords.
+        The keywords are separated by delimiters, such as commas and semicolons.
+        Your goal is to extract up to three keywords from the text.
+
+        Example 1:
+
+        Input string:
+
+        "interdisciplinary collaboration', 'Battery Health Estimation Algorithm, "
+
+        Output:
+
+        {{
+            "keywords": [
+                "interdisciplinary collaboration",
+                "Battery Health Estimation Algorithm"
+            ]
+        }}
+
+        Example 2:
+
+        'Skill 1 - Cell Engineering (R&D and Mature Products), Skill 2 - Product Pricing/Cost Engineering, Skill 3 - Strategic Partnership'
+
+        Output:
+
+        {{
+            "keywords": [
+                "Cell Engineering (R&D and Mature Products)",
+                "Product Pricing/Cost Engineering",
+                "Strategic Partnership"
+            ]
+        }}
+
+        Example 3:
+
+        'skill 1: Electrochemistry and Battery Chemistry skill 2: Sustainability Practices and Recycling Knowledge skill 3: Data Analysis'
+
+        Output:
+
+        {{
+            "keywords": [
+                "Electrochemistry and Battery Chemistry",
+                "Sustainability Practices and Recycling Knowledge",
+                "Data Analysis"
+            ]
+        }}
+
+        Example 4:
+
+        '[Understanding MES]; [Understanding "Toyota Way" production]; [Product design validation]'
+
+        Output:
+
+        {{
+            "keywords": [
+                "Understanding MES",
+                "Understanding Toyota Way production",
+                "Product design validation"
+            ]
+        }}
+
+        Example 5:
+
+        'Understanding key factors in battery (misbalance, effect of impedance variation on whole bandwidth), understanding of swelling understanding measurement and modelling of cell, understanding of venting.'
+
+        Output:
+
+        {{
+            "keywords": [
+                "Understanding key factors in battery (misbalance, effect of impedance variation on whole bandwidth)",
+                "understanding measurement and modelling of cell",
+                "understanding of venting"
+            ]
+        }}
+
+        Example 6:
+
+        'Modelling; Testing; Algorithms'
+
+        Output:
+
+        {{
+            "keywords": [
+                "Modelling",
+                "Testing",
+                "Algorithms"
+            ]
+        }}
+
+        Return your answer as a JSON object with the following format:
+
+        {{
+            "keywords": [
+                "keyword1",
+                "keyword2",
+                "keyword3"
+            ]
+        }}
+
+        """
+
+        response = self.client.chat.completions.create(
+                    model='gpt-4o-mini',
+                    messages=[
+                        {
+                            'role': 'system',
+                            'content': dedent(sys_prompt)
+                        },
+                        {
+                            'role': 'user',
+                            'content': string_of_list
+                        }
+                    ],
+                    response_format={ 'type' : 'json_object'}
+                )
+
+        output = json.loads(response.choices[0].message.content)
+
+        list_of_strings = output['keywords']
+
+        return list_of_strings
+
+
+
+
     def define_categories(self, question, keyword_list):
         """
         Define categories for a list of keywords.
@@ -207,10 +358,14 @@ class LLM:
 
         Examples:
 
+        For the given categories:
+
+        ['Manufacturing and Process Engineering', 'Business Acumen and Market Knowledge', 'Language Skills and Multilingualism']
+
         If the survey response text is 'scale up', then return:
 
         {{
-            result:
+            "result":
                 {{
                     "response_text": "scale up"
                     "category": "Manufacturing and Process Engineering"
@@ -220,7 +375,7 @@ class LLM:
         If the survey response text is 'ability to keep up with and foresee research/industry trends and directions', then return:
 
         {{
-            result:
+            "result":
                 {{
                     "response_text": "ability to keep up with and foresee research/industry trends and directions"
                     "category": "Business Acumen and Market Knowledge"
@@ -230,7 +385,7 @@ class LLM:
         If the survey response text is 'language abilities (Chinese, Korean, Japanese)', then return:
 
         {{
-            "category":
+            "result":
                 {{
                     "response_text": "language abilities (Chinese, Korean, Japanese)"
                     "category": "Language Skills and Multilingualism"
@@ -253,6 +408,8 @@ class LLM:
                         response_format={ "type": "json_object" }
                     )
 
-        llm_output = json.loads(response.choices[0].message.content)
+        content = response.choices[0].message.content
+
+        llm_output = json.loads(content)
 
         return llm_output
