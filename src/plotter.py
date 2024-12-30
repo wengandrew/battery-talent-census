@@ -11,12 +11,12 @@ import pathlib
 import numpy as np
 import src.utils as utils
 
-OUTPUT_PATH = 'outputs/'
-VF_BLUE_DARK = '#00224e'
-VF_BLUE = '#0056c4'
+OUTPUT_PATH   = 'outputs/'
+VF_BLUE_DARK  = '#00224e'
+VF_BLUE       = '#0056c4'
 VF_BLUE_LIGHT = '#3292fb'
-VF_LIGHT = '#9fcaf8'
-VF_YELLOW = '#fbaf00'
+VF_LIGHT      = '#9fcaf8'
+VF_YELLOW     = '#fbaf00'
 
 class Plotter:
 
@@ -153,6 +153,68 @@ class Plotter:
 
         plt.show()
         plt.close()
+
+
+    def make_sentiment_plot(self, this_dict,
+                            tosave=False):
+
+        # Get the data and labels
+        question = this_dict['question']
+        values   = this_dict['responses']['values']
+        keys     = this_dict['responses']['keys']
+        labels   = this_dict['labels']
+        n_rows   = len(keys)
+
+        # Create subplots
+        fig, axes = plt.subplots(nrows=n_rows, figsize=(10, 3*n_rows))
+        fig.suptitle(question, fontsize=16, x=0.063, ha='left')
+
+        # Create histogram for each row
+        for i in range(n_rows):
+
+            # Make the histogram
+            # Create bars with custom style
+            axes[i].hist(values[:,i], bins=np.arange(0.5, 6.5, 1),
+                        color=VF_BLUE, alpha=1.0,
+                        edgecolor=VF_BLUE, linewidth=1.5,
+                        rwidth=0.8)
+
+            # Add value labels on top of each bar
+            for rect in axes[i].patches:
+                height = rect.get_height()
+                axes[i].text(rect.get_x() + rect.get_width()/2, height,
+                             f'{int(height)}',
+                             ha='center', va='bottom')
+
+            # Annotations
+            mean = np.nanmean(values[:,i])
+            std  = np.nanstd(values[:,i])
+
+            axes[i].annotate(f'n = {len(values[:,i])}\nMean: {mean:.2f}\nStd: {std:.2f}',
+                            xy=(0.02, 0.73),
+                            color='gray',
+                            xycoords='axes fraction',
+                            bbox=dict(
+                                facecolor='white',
+                                edgecolor='none',
+                                alpha=0.7)
+                            )
+
+            axes[i].set_title(f'"{keys[i]}"', loc='left',
+                              color=VF_BLUE_DARK, pad=10)
+
+            axes[i].set_ylabel('Count')
+            axes[i].set_xticks(range(1,6))
+            axes[i].set_ylim(top=axes[i].get_ylim()[1] * 1.1)
+            axes[i].set_xticklabels(labels)
+
+        plt.tight_layout()
+
+        if tosave:
+            filename = f'{this_dict['key']}.png'
+            plt.savefig(str(pathlib.Path(OUTPUT_PATH) / filename))
+
+        plt.show()
 
 
     def make_bar_plot_from_dict(self, input_dict,
