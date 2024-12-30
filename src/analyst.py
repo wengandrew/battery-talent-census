@@ -653,11 +653,7 @@ class Analyst:
         res['ideal_value_chain'] = ideal_vc_counter
         res['ideal_job_aspects'] = ideal_job_aspects_counter
         res['ideal_salary_list'] = np.array(ideal_salary_list)
-
-        # these numbers aren't very good... may need to manually pick out outliers
         res['ideal_salary_median'] = np.nanmedian(ideal_salary_list)
-        res['ideal_salary_mean'] = np.nanmean(ideal_salary_list)
-        res['ideal_salary_std'] = np.nanstd(ideal_salary_list)
 
         return res
 
