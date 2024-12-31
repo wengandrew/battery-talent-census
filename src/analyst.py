@@ -97,6 +97,7 @@ class Analyst:
 
         return filtered_list
 
+
     def filter_for_working(self, respondents_list=None) -> list:
         """
         From a given list of respondents, downselect to only those who are
