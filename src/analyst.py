@@ -4,8 +4,8 @@ from collections import defaultdict
 from src.respondent import Respondent as Respondent
 import src.utils as utils
 
-FILE_GSHEET   = 'data/talent_census_data_20241216_gsheet_export.csv'
-FILE_TYPEFORM = 'data/talent_census_data_20241216_typeform_export.csv'
+FILE_GSHEET   = 'data/talent_census_data_20241230_gsheet_export.csv'
+FILE_TYPEFORM = 'data/talent_census_data_20241230_typeform_export.csv'
 
 class Analyst:
     """
