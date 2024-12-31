@@ -672,8 +672,6 @@ class Analyst:
         num_internships_counter = dict()
         internship_vc_counter = dict()
         internship_role_counter = dict()
-        internship_vc_list = []
-        internship_role_list = []
         internship_top_skills_list = []
         internship_skills_wish_learned_list = []
         internship_skills_unprepared_list = []
@@ -686,8 +684,6 @@ class Analyst:
             utils.update_dict_counter(num_internships_counter, respondent.student['num_internships'])
             utils.update_dict_counter(internship_vc_counter, respondent.student['internship_value_chain'])
             utils.update_dict_counter(internship_role_counter, respondent.student['internship_role'])
-            utils.nanappend(internship_vc_list, respondent.student['internship_value_chain'])
-            utils.nanappend(internship_role_list, respondent.student['internship_role'])
             utils.nanappend(internship_top_skills_list, respondent.student['internship_top_skills'])
             utils.nanappend(internship_skills_wish_learned_list, respondent.student['internship_skills_wish_learned'])
             utils.nanappend(internship_skills_unprepared_list, respondent.student['internship_skills_unprepared'])
@@ -698,8 +694,6 @@ class Analyst:
         res['num_internships'] = num_internships_counter
         res['internship_value_chain'] = internship_vc_counter
         res['internship_role'] = internship_role_counter
-        res['internship_value_chain_list'] = internship_vc_list
-        res['internship_role_list'] = internship_role_list
         res['internship_top_skills_list'] = internship_top_skills_list
         res['internship_skills_wish_learned_list'] = internship_skills_wish_learned_list
         res['internship_skills_unprepared_list'] = internship_skills_unprepared_list
