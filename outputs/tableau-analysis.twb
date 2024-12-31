@@ -1,0 +1,1626 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20233.24.0908.0833                               -->
+<workbook original-version='18.1' source-build='2023.3.10 (20233.24.0908.0833)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='talent_census_data_20241230_gsheet_export' inline='true' name='federated.187axip0wc8r91171ideq0bvml6h' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='talent_census_data_20241230_gsheet_export' name='textscan.1o3thd217w28mc129qlha08z5is2'>
+            <connection class='textscan' directory='/Users/aweng/code/battery-talent-census/data' filename='talent_census_data_20241230_gsheet_export.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.1o3thd217w28mc129qlha08z5is2' name='talent_census_data_20241230_gsheet_export.csv' table='[talent_census_data_20241230_gsheet_export#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='I feel good about what I&apos;m working on' ordinal='0' />
+            <column datatype='integer' name='I feel good about my career path' ordinal='1' />
+            <column datatype='integer' name='I feel good about my work-life balance' ordinal='2' />
+            <column datatype='integer' name='I feel valued by those around me' ordinal='3' />
+            <column datatype='integer' name='I see opportunities for career growth' ordinal='4' />
+            <column datatype='string' name='In your opinion, what are the top three skills most in demand in the battery industry?' ordinal='5' />
+            <column datatype='string' name='In opinion, which part(s) of the battery value chain are most in need of more skilled workers?' ordinal='6' />
+            <column datatype='string' name='What is your highest level of education?' ordinal='7' />
+            <column datatype='string' name='What did you study in school?' ordinal='8' />
+            <column datatype='string' name='What country do you live in?' ordinal='9' />
+            <column datatype='string' name='What is your ZIP code or postal code?' ordinal='10' />
+            <column datatype='integer' name='What is your total income over the past 12 months?' ordinal='11' />
+            <column datatype='integer' name='How many hours did you work last week?' ordinal='12' />
+            <column datatype='integer' name='What is your age?' ordinal='13' />
+            <column datatype='string' name='How would you best describe yourself?' ordinal='14' />
+            <column datatype='string' name='To which gender do you most identify with?' ordinal='15' />
+            <column datatype='string' name='What is your citizenship status in the country you currently live in?' ordinal='16' />
+            <column datatype='string' name='Have you ever served in the military?' ordinal='17' />
+            <column datatype='string' name='What is your current employment situation?' ordinal='18' />
+            <column datatype='boolean' name='Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper' ordinal='19' />
+            <column datatype='boolean' name='Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul' ordinal='20' />
+            <column datatype='boolean' name='Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que' ordinal='21' />
+            <column datatype='string' name='Why did you leave your previous company?' ordinal='22' />
+            <column datatype='integer' name='I am satisfied with my compensation' ordinal='23' />
+            <column datatype='integer' name='I am being underpaid compared to similar roles' ordinal='24' />
+            <column datatype='integer' name='I am satisfied with the raises and/or bonuses I have been receiving' ordinal='25' />
+            <column datatype='integer' name='What is your annual base salary?' ordinal='26' />
+            <column datatype='string' name='Beyond base salary, what additional compensation types do you receive?' ordinal='27' />
+            <column datatype='integer' name='How many times have you received a base salary increase over the past 12 months of employment?' ordinal='28' />
+            <column datatype='integer' name='How many times have you received a bonus over the past 12 months of employment?' ordinal='29' />
+            <column datatype='integer' name='How many years have you been with the company?' ordinal='30' />
+            <column datatype='string' name='Where does the company fall on the battery value chain?' ordinal='31' />
+            <column datatype='string' name='How would you classify your company&apos;s stage of development?' ordinal='32' />
+            <column datatype='string' name='In what country is your office located?' ordinal='33' />
+            <column datatype='string' name='In what state is your office located?' ordinal='34' />
+            <column datatype='integer' name='How many days did you work in the office last week?' ordinal='35' />
+            <column datatype='string' name='How many employees work at your company?' ordinal='36' />
+            <column datatype='string' name='What is the total headcount on your team?' ordinal='37' />
+            <column datatype='string' name='What is your current job title?' ordinal='38' />
+            <column datatype='string' name='What does your role involve?' ordinal='39' />
+            <column datatype='string' name='What is your current level?' ordinal='40' />
+            <column datatype='string' name='Why did you choose your current role and company?' ordinal='41' />
+            <column datatype='string' name='Have you previously worked in other industries?' ordinal='42' />
+            <column datatype='string' name='What was your previous role before joining the battery industry?' ordinal='43' />
+            <column datatype='integer' name='After working for 1 week?' ordinal='44' />
+            <column datatype='integer' name='After working for 1 month?' ordinal='45' />
+            <column datatype='integer' name='After working for 3 months?' ordinal='46' />
+            <column datatype='integer' name='Last week?' ordinal='47' />
+            <column datatype='string' name='When you first started your role, how were you trained?' ordinal='48' />
+            <column datatype='string' name='When you first started in the battery industry, what could have improved your job performance on day one?' ordinal='49' />
+            <column datatype='integer' name='How many internships did you complete before starting your current role?' ordinal='50' />
+            <column datatype='string' name='In your opinion, what are the top skills that contributed to your success?' ordinal='51' />
+            <column datatype='string' name='In your opinion, which positions are the hardest to fill in your company?' ordinal='52' />
+            <column datatype='string' name='In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?' ordinal='53' />
+            <column datatype='integer' name='How many times have you changed employers in the last five years?' ordinal='54' />
+            <column datatype='boolean' name='Are you currently seeking new job opportunities?' ordinal='55' />
+            <column datatype='integer' name='My company has a good reputation in the industry' ordinal='56' />
+            <column datatype='integer' name='I want to stay with my company for at least 12 more months' ordinal='57' />
+            <column datatype='integer' name='I am satisfied with my current job stability' ordinal='58' />
+            <column datatype='integer' name='I am confident in my ability to find my next job in the industry' ordinal='59' />
+            <column datatype='string' name='If you were offered a similar role with a different company, what factors would influence your decision accept the offer?' ordinal='60' />
+            <column datatype='string' name='Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?' ordinal='61' />
+            <column datatype='integer' name='Mental health support' ordinal='62' />
+            <column datatype='integer' name='Work-life balance initiatives' ordinal='63' />
+            <column datatype='integer' name='Financial wellness programs' ordinal='64' />
+            <column datatype='integer' name='Career development opportunities' ordinal='65' />
+            <column datatype='string' name='What benefits does your company entitle you to?' ordinal='66' />
+            <column datatype='integer' name='How many weeks of parental leave are you entitled to?' ordinal='67' />
+            <column datatype='integer' name='How many weeks of paid time off are you entitled to each year?' ordinal='68' />
+            <column datatype='integer' name='How many days of sick leave are you entitled to?' ordinal='69' />
+            <column datatype='string' name='Are there any unique benefits that you value?' ordinal='70' />
+            <column datatype='integer' name='After graduating, I know what role(s) to apply to' ordinal='71' />
+            <column datatype='integer' name='After graduating, I will find a job' ordinal='72' />
+            <column datatype='integer' name='By the time I graduate, I will have learned the skills needed to find a job' ordinal='73' />
+            <column datatype='integer' name='I am optimistic about the future of the battery industry' ordinal='74' />
+            <column datatype='string' name='After you graduate, what would be your ideal job title?' ordinal='75' />
+            <column datatype='string' name='After you graduate, what part(s) of the battery value chain do you see yourself contributing to?' ordinal='76' />
+            <column datatype='string' name='Which of the following aspects are you looking for in your first job?' ordinal='77' />
+            <column datatype='integer' name='How much do you expect to be paid for your first job?' ordinal='78' />
+            <column datatype='integer' name='How many internships have you completed so far?' ordinal='79' />
+            <column datatype='string' name='During your previous internship, where did your  employer fall on the battery value chain?' ordinal='80' />
+            <column datatype='string' name='During your previous internship, what did your role involve?' ordinal='81' />
+            <column datatype='string' name='During your previous internship, what are the top three skills that contributed to your success?' ordinal='82' />
+            <column datatype='string' name='During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?' ordinal='83' />
+            <column datatype='string' name='During your previous internship, were there skills that you felt unprepared for? If yes, what were they?' ordinal='84' />
+            <column datatype='integer' name='During your previous internship, what was your hourly pay?' ordinal='85' />
+            <column datatype='integer' name='During your previous internship, how many hours per week did you work, on average?' ordinal='86' />
+            <column datatype='datetime' name='Submitted At' ordinal='87' />
+            <column datatype='string' name='Token' ordinal='88' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.1o3thd217w28mc129qlha08z5is2' name='talent_census_data_20241230_gsheet_export.csv' table='[talent_census_data_20241230_gsheet_export#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='I feel good about what I&apos;m working on' ordinal='0' />
+            <column datatype='integer' name='I feel good about my career path' ordinal='1' />
+            <column datatype='integer' name='I feel good about my work-life balance' ordinal='2' />
+            <column datatype='integer' name='I feel valued by those around me' ordinal='3' />
+            <column datatype='integer' name='I see opportunities for career growth' ordinal='4' />
+            <column datatype='string' name='In your opinion, what are the top three skills most in demand in the battery industry?' ordinal='5' />
+            <column datatype='string' name='In opinion, which part(s) of the battery value chain are most in need of more skilled workers?' ordinal='6' />
+            <column datatype='string' name='What is your highest level of education?' ordinal='7' />
+            <column datatype='string' name='What did you study in school?' ordinal='8' />
+            <column datatype='string' name='What country do you live in?' ordinal='9' />
+            <column datatype='string' name='What is your ZIP code or postal code?' ordinal='10' />
+            <column datatype='integer' name='What is your total income over the past 12 months?' ordinal='11' />
+            <column datatype='integer' name='How many hours did you work last week?' ordinal='12' />
+            <column datatype='integer' name='What is your age?' ordinal='13' />
+            <column datatype='string' name='How would you best describe yourself?' ordinal='14' />
+            <column datatype='string' name='To which gender do you most identify with?' ordinal='15' />
+            <column datatype='string' name='What is your citizenship status in the country you currently live in?' ordinal='16' />
+            <column datatype='string' name='Have you ever served in the military?' ordinal='17' />
+            <column datatype='string' name='What is your current employment situation?' ordinal='18' />
+            <column datatype='boolean' name='Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper' ordinal='19' />
+            <column datatype='boolean' name='Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul' ordinal='20' />
+            <column datatype='boolean' name='Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que' ordinal='21' />
+            <column datatype='string' name='Why did you leave your previous company?' ordinal='22' />
+            <column datatype='integer' name='I am satisfied with my compensation' ordinal='23' />
+            <column datatype='integer' name='I am being underpaid compared to similar roles' ordinal='24' />
+            <column datatype='integer' name='I am satisfied with the raises and/or bonuses I have been receiving' ordinal='25' />
+            <column datatype='integer' name='What is your annual base salary?' ordinal='26' />
+            <column datatype='string' name='Beyond base salary, what additional compensation types do you receive?' ordinal='27' />
+            <column datatype='integer' name='How many times have you received a base salary increase over the past 12 months of employment?' ordinal='28' />
+            <column datatype='integer' name='How many times have you received a bonus over the past 12 months of employment?' ordinal='29' />
+            <column datatype='integer' name='How many years have you been with the company?' ordinal='30' />
+            <column datatype='string' name='Where does the company fall on the battery value chain?' ordinal='31' />
+            <column datatype='string' name='How would you classify your company&apos;s stage of development?' ordinal='32' />
+            <column datatype='string' name='In what country is your office located?' ordinal='33' />
+            <column datatype='string' name='In what state is your office located?' ordinal='34' />
+            <column datatype='integer' name='How many days did you work in the office last week?' ordinal='35' />
+            <column datatype='string' name='How many employees work at your company?' ordinal='36' />
+            <column datatype='string' name='What is the total headcount on your team?' ordinal='37' />
+            <column datatype='string' name='What is your current job title?' ordinal='38' />
+            <column datatype='string' name='What does your role involve?' ordinal='39' />
+            <column datatype='string' name='What is your current level?' ordinal='40' />
+            <column datatype='string' name='Why did you choose your current role and company?' ordinal='41' />
+            <column datatype='string' name='Have you previously worked in other industries?' ordinal='42' />
+            <column datatype='string' name='What was your previous role before joining the battery industry?' ordinal='43' />
+            <column datatype='integer' name='After working for 1 week?' ordinal='44' />
+            <column datatype='integer' name='After working for 1 month?' ordinal='45' />
+            <column datatype='integer' name='After working for 3 months?' ordinal='46' />
+            <column datatype='integer' name='Last week?' ordinal='47' />
+            <column datatype='string' name='When you first started your role, how were you trained?' ordinal='48' />
+            <column datatype='string' name='When you first started in the battery industry, what could have improved your job performance on day one?' ordinal='49' />
+            <column datatype='integer' name='How many internships did you complete before starting your current role?' ordinal='50' />
+            <column datatype='string' name='In your opinion, what are the top skills that contributed to your success?' ordinal='51' />
+            <column datatype='string' name='In your opinion, which positions are the hardest to fill in your company?' ordinal='52' />
+            <column datatype='string' name='In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?' ordinal='53' />
+            <column datatype='integer' name='How many times have you changed employers in the last five years?' ordinal='54' />
+            <column datatype='boolean' name='Are you currently seeking new job opportunities?' ordinal='55' />
+            <column datatype='integer' name='My company has a good reputation in the industry' ordinal='56' />
+            <column datatype='integer' name='I want to stay with my company for at least 12 more months' ordinal='57' />
+            <column datatype='integer' name='I am satisfied with my current job stability' ordinal='58' />
+            <column datatype='integer' name='I am confident in my ability to find my next job in the industry' ordinal='59' />
+            <column datatype='string' name='If you were offered a similar role with a different company, what factors would influence your decision accept the offer?' ordinal='60' />
+            <column datatype='string' name='Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?' ordinal='61' />
+            <column datatype='integer' name='Mental health support' ordinal='62' />
+            <column datatype='integer' name='Work-life balance initiatives' ordinal='63' />
+            <column datatype='integer' name='Financial wellness programs' ordinal='64' />
+            <column datatype='integer' name='Career development opportunities' ordinal='65' />
+            <column datatype='string' name='What benefits does your company entitle you to?' ordinal='66' />
+            <column datatype='integer' name='How many weeks of parental leave are you entitled to?' ordinal='67' />
+            <column datatype='integer' name='How many weeks of paid time off are you entitled to each year?' ordinal='68' />
+            <column datatype='integer' name='How many days of sick leave are you entitled to?' ordinal='69' />
+            <column datatype='string' name='Are there any unique benefits that you value?' ordinal='70' />
+            <column datatype='integer' name='After graduating, I know what role(s) to apply to' ordinal='71' />
+            <column datatype='integer' name='After graduating, I will find a job' ordinal='72' />
+            <column datatype='integer' name='By the time I graduate, I will have learned the skills needed to find a job' ordinal='73' />
+            <column datatype='integer' name='I am optimistic about the future of the battery industry' ordinal='74' />
+            <column datatype='string' name='After you graduate, what would be your ideal job title?' ordinal='75' />
+            <column datatype='string' name='After you graduate, what part(s) of the battery value chain do you see yourself contributing to?' ordinal='76' />
+            <column datatype='string' name='Which of the following aspects are you looking for in your first job?' ordinal='77' />
+            <column datatype='integer' name='How much do you expect to be paid for your first job?' ordinal='78' />
+            <column datatype='integer' name='How many internships have you completed so far?' ordinal='79' />
+            <column datatype='string' name='During your previous internship, where did your  employer fall on the battery value chain?' ordinal='80' />
+            <column datatype='string' name='During your previous internship, what did your role involve?' ordinal='81' />
+            <column datatype='string' name='During your previous internship, what are the top three skills that contributed to your success?' ordinal='82' />
+            <column datatype='string' name='During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?' ordinal='83' />
+            <column datatype='string' name='During your previous internship, were there skills that you felt unprepared for? If yes, what were they?' ordinal='84' />
+            <column datatype='integer' name='During your previous internship, what was your hourly pay?' ordinal='85' />
+            <column datatype='integer' name='During your previous internship, how many hours per week did you work, on average?' ordinal='86' />
+            <column datatype='datetime' name='Submitted At' ordinal='87' />
+            <column datatype='string' name='Token' ordinal='88' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I feel good about what I&apos;m working on</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I feel good about what I&apos;m working on]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I feel good about what I&apos;m working on</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I feel good about my career path</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I feel good about my career path]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I feel good about my career path</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I feel good about my work-life balance</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I feel good about my work-life balance]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I feel good about my work-life balance</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I feel valued by those around me</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I feel valued by those around me]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I feel valued by those around me</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I see opportunities for career growth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I see opportunities for career growth]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I see opportunities for career growth</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In your opinion, what are the top three skills most in demand in the battery industry?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In your opinion, what are the top three skills most in demand in the battery industry?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In your opinion, what are the top three skills most in demand in the battery industry?</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In opinion, which part(s) of the battery value chain are most in need of more skilled workers?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In opinion, which part(s) of the battery value chain are most in need of more skilled workers?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In opinion, which part(s) of the battery value chain are most in need of more skilled workers?</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your highest level of education?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your highest level of education?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your highest level of education?</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What did you study in school?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What did you study in school?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What did you study in school?</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What country do you live in?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What country do you live in?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What country do you live in?</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your ZIP code or postal code?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your ZIP code or postal code?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your ZIP code or postal code?</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your total income over the past 12 months?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[What is your total income over the past 12 months?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your total income over the past 12 months?</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many hours did you work last week?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many hours did you work last week?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many hours did you work last week?</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your age?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[What is your age?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your age?</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How would you best describe yourself?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[How would you best describe yourself?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How would you best describe yourself?</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>To which gender do you most identify with?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[To which gender do you most identify with?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>To which gender do you most identify with?</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your citizenship status in the country you currently live in?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your citizenship status in the country you currently live in?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your citizenship status in the country you currently live in?</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Have you ever served in the military?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Have you ever served in the military?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Have you ever served in the military?</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your current employment situation?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your current employment situation?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your current employment situation?</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Why did you leave your previous company?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Why did you leave your previous company?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Why did you leave your previous company?</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am satisfied with my compensation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am satisfied with my compensation]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am satisfied with my compensation</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am being underpaid compared to similar roles</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am being underpaid compared to similar roles]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am being underpaid compared to similar roles</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am satisfied with the raises and/or bonuses I have been receiving</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am satisfied with the raises and/or bonuses I have been receiving]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am satisfied with the raises and/or bonuses I have been receiving</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your annual base salary?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[What is your annual base salary?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your annual base salary?</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Beyond base salary, what additional compensation types do you receive?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Beyond base salary, what additional compensation types do you receive?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Beyond base salary, what additional compensation types do you receive?</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many times have you received a base salary increase over the past 12 months of employment?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many times have you received a base salary increase over the past 12 months of employment?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many times have you received a base salary increase over the past 12 months of employment?</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many times have you received a bonus over the past 12 months of employment?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many times have you received a bonus over the past 12 months of employment?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many times have you received a bonus over the past 12 months of employment?</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many years have you been with the company?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many years have you been with the company?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many years have you been with the company?</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Where does the company fall on the battery value chain?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Where does the company fall on the battery value chain?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Where does the company fall on the battery value chain?</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How would you classify your company&apos;s stage of development?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[How would you classify your company&apos;s stage of development?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How would you classify your company&apos;s stage of development?</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In what country is your office located?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In what country is your office located?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In what country is your office located?</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In what state is your office located?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In what state is your office located?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In what state is your office located?</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many days did you work in the office last week?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many days did you work in the office last week?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many days did you work in the office last week?</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many employees work at your company?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[How many employees work at your company?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many employees work at your company?</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is the total headcount on your team?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is the total headcount on your team?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is the total headcount on your team?</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your current job title?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your current job title?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your current job title?</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What does your role involve?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What does your role involve?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What does your role involve?</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What is your current level?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What is your current level?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What is your current level?</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Why did you choose your current role and company?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Why did you choose your current role and company?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Why did you choose your current role and company?</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Have you previously worked in other industries?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Have you previously worked in other industries?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Have you previously worked in other industries?</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What was your previous role before joining the battery industry?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What was your previous role before joining the battery industry?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What was your previous role before joining the battery industry?</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After working for 1 week?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[After working for 1 week?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After working for 1 week?</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After working for 1 month?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[After working for 1 month?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After working for 1 month?</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After working for 3 months?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[After working for 3 months?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After working for 3 months?</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Last week?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Last week?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Last week?</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>When you first started your role, how were you trained?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[When you first started your role, how were you trained?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>When you first started your role, how were you trained?</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>When you first started in the battery industry, what could have improved your job performance on day one?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[When you first started in the battery industry, what could have improved your job performance on day one?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>When you first started in the battery industry, what could have improved your job performance on day one?</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many internships did you complete before starting your current role?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many internships did you complete before starting your current role?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many internships did you complete before starting your current role?</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In your opinion, what are the top skills that contributed to your success?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In your opinion, what are the top skills that contributed to your success?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In your opinion, what are the top skills that contributed to your success?</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In your opinion, which positions are the hardest to fill in your company?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In your opinion, which positions are the hardest to fill in your company?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In your opinion, which positions are the hardest to fill in your company?</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many times have you changed employers in the last five years?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many times have you changed employers in the last five years?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many times have you changed employers in the last five years?</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Are you currently seeking new job opportunities?</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Are you currently seeking new job opportunities?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Are you currently seeking new job opportunities?</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>My company has a good reputation in the industry</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[My company has a good reputation in the industry]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>My company has a good reputation in the industry</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I want to stay with my company for at least 12 more months</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I want to stay with my company for at least 12 more months]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I want to stay with my company for at least 12 more months</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am satisfied with my current job stability</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am satisfied with my current job stability]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am satisfied with my current job stability</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am confident in my ability to find my next job in the industry</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am confident in my ability to find my next job in the industry]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am confident in my ability to find my next job in the industry</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>If you were offered a similar role with a different company, what factors would influence your decision accept the offer?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[If you were offered a similar role with a different company, what factors would influence your decision accept the offer?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>If you were offered a similar role with a different company, what factors would influence your decision accept the offer?</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Mental health support</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Mental health support]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Mental health support</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Work-life balance initiatives</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Work-life balance initiatives]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Work-life balance initiatives</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Financial wellness programs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Financial wellness programs]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Financial wellness programs</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Career development opportunities</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Career development opportunities]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Career development opportunities</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>What benefits does your company entitle you to?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[What benefits does your company entitle you to?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>What benefits does your company entitle you to?</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many weeks of parental leave are you entitled to?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many weeks of parental leave are you entitled to?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many weeks of parental leave are you entitled to?</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many weeks of paid time off are you entitled to each year?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many weeks of paid time off are you entitled to each year?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many weeks of paid time off are you entitled to each year?</remote-alias>
+            <ordinal>68</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many days of sick leave are you entitled to?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many days of sick leave are you entitled to?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many days of sick leave are you entitled to?</remote-alias>
+            <ordinal>69</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Are there any unique benefits that you value?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Are there any unique benefits that you value?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Are there any unique benefits that you value?</remote-alias>
+            <ordinal>70</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After graduating, I know what role(s) to apply to</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[After graduating, I know what role(s) to apply to]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After graduating, I know what role(s) to apply to</remote-alias>
+            <ordinal>71</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After graduating, I will find a job</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[After graduating, I will find a job]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After graduating, I will find a job</remote-alias>
+            <ordinal>72</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>By the time I graduate, I will have learned the skills needed to find a job</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[By the time I graduate, I will have learned the skills needed to find a job]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>By the time I graduate, I will have learned the skills needed to find a job</remote-alias>
+            <ordinal>73</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>I am optimistic about the future of the battery industry</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[I am optimistic about the future of the battery industry]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>I am optimistic about the future of the battery industry</remote-alias>
+            <ordinal>74</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After you graduate, what would be your ideal job title?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[After you graduate, what would be your ideal job title?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After you graduate, what would be your ideal job title?</remote-alias>
+            <ordinal>75</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>After you graduate, what part(s) of the battery value chain do you see yourself contributing to?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[After you graduate, what part(s) of the battery value chain do you see yourself contributing to?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>After you graduate, what part(s) of the battery value chain do you see yourself contributing to?</remote-alias>
+            <ordinal>76</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Which of the following aspects are you looking for in your first job?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Which of the following aspects are you looking for in your first job?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Which of the following aspects are you looking for in your first job?</remote-alias>
+            <ordinal>77</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How much do you expect to be paid for your first job?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How much do you expect to be paid for your first job?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How much do you expect to be paid for your first job?</remote-alias>
+            <ordinal>78</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>How many internships have you completed so far?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[How many internships have you completed so far?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>How many internships have you completed so far?</remote-alias>
+            <ordinal>79</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, where did your  employer fall on the battery value chain?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[During your previous internship, where did your  employer fall on the battery value chain?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, where did your  employer fall on the battery value chain?</remote-alias>
+            <ordinal>80</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, what did your role involve?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[During your previous internship, what did your role involve?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, what did your role involve?</remote-alias>
+            <ordinal>81</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, what are the top three skills that contributed to your success?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[During your previous internship, what are the top three skills that contributed to your success?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, what are the top three skills that contributed to your success?</remote-alias>
+            <ordinal>82</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?</remote-alias>
+            <ordinal>83</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, were there skills that you felt unprepared for? If yes, what were they?</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[During your previous internship, were there skills that you felt unprepared for? If yes, what were they?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, were there skills that you felt unprepared for? If yes, what were they?</remote-alias>
+            <ordinal>84</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, what was your hourly pay?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[During your previous internship, what was your hourly pay?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, what was your hourly pay?</remote-alias>
+            <ordinal>85</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>During your previous internship, how many hours per week did you work, on average?</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[During your previous internship, how many hours per week did you work, on average?]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>During your previous internship, how many hours per week did you work, on average?</remote-alias>
+            <ordinal>86</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Submitted At</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Submitted At]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Submitted At</remote-alias>
+            <ordinal>87</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Token</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Token]</local-name>
+            <parent-name>[talent_census_data_20241230_gsheet_export.csv]</parent-name>
+            <remote-alias>Token</remote-alias>
+            <ordinal>88</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[In what country is your office located?]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='string' name='[In what state is your office located?]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column datatype='integer' name='[Last week?]' role='dimension' type='quantitative' />
+      <column datatype='string' name='[What country do you live in?]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='string' name='[What is your ZIP code or postal code?]' role='dimension' semantic-role='[ZipCode].[Name]' type='nominal' />
+      <column datatype='string' name='[What is your citizenship status in the country you currently live in?]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='talent_census_data_20241230_gsheet_export.csv' datatype='table' name='[__tableau_internal_object_id__].[talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='talent_census_data_20241230_gsheet_export.csv' id='talent_census_data_20241230_gsheet_export.csv_74D7FD9AF8F14B42997D52BD76AE6D3C'>
+            <properties context=''>
+              <relation connection='textscan.1o3thd217w28mc129qlha08z5is2' name='talent_census_data_20241230_gsheet_export.csv' table='[talent_census_data_20241230_gsheet_export#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='I feel good about what I&apos;m working on' ordinal='0' />
+                  <column datatype='integer' name='I feel good about my career path' ordinal='1' />
+                  <column datatype='integer' name='I feel good about my work-life balance' ordinal='2' />
+                  <column datatype='integer' name='I feel valued by those around me' ordinal='3' />
+                  <column datatype='integer' name='I see opportunities for career growth' ordinal='4' />
+                  <column datatype='string' name='In your opinion, what are the top three skills most in demand in the battery industry?' ordinal='5' />
+                  <column datatype='string' name='In opinion, which part(s) of the battery value chain are most in need of more skilled workers?' ordinal='6' />
+                  <column datatype='string' name='What is your highest level of education?' ordinal='7' />
+                  <column datatype='string' name='What did you study in school?' ordinal='8' />
+                  <column datatype='string' name='What country do you live in?' ordinal='9' />
+                  <column datatype='string' name='What is your ZIP code or postal code?' ordinal='10' />
+                  <column datatype='integer' name='What is your total income over the past 12 months?' ordinal='11' />
+                  <column datatype='integer' name='How many hours did you work last week?' ordinal='12' />
+                  <column datatype='integer' name='What is your age?' ordinal='13' />
+                  <column datatype='string' name='How would you best describe yourself?' ordinal='14' />
+                  <column datatype='string' name='To which gender do you most identify with?' ordinal='15' />
+                  <column datatype='string' name='What is your citizenship status in the country you currently live in?' ordinal='16' />
+                  <column datatype='string' name='Have you ever served in the military?' ordinal='17' />
+                  <column datatype='string' name='What is your current employment situation?' ordinal='18' />
+                  <column datatype='boolean' name='Since you&apos;re currently working in the industry, we would love to ask you some more detailed questions about your industry exper' ordinal='19' />
+                  <column datatype='boolean' name='Since you&apos;re a student, we would love to ask you more detailed questions about your student and job searching experience.__Woul' ordinal='20' />
+                  <column datatype='boolean' name='Since you&apos;ve indicated that you used to work for a company but no longer work there, we would love to ask you more detailed que' ordinal='21' />
+                  <column datatype='string' name='Why did you leave your previous company?' ordinal='22' />
+                  <column datatype='integer' name='I am satisfied with my compensation' ordinal='23' />
+                  <column datatype='integer' name='I am being underpaid compared to similar roles' ordinal='24' />
+                  <column datatype='integer' name='I am satisfied with the raises and/or bonuses I have been receiving' ordinal='25' />
+                  <column datatype='integer' name='What is your annual base salary?' ordinal='26' />
+                  <column datatype='string' name='Beyond base salary, what additional compensation types do you receive?' ordinal='27' />
+                  <column datatype='integer' name='How many times have you received a base salary increase over the past 12 months of employment?' ordinal='28' />
+                  <column datatype='integer' name='How many times have you received a bonus over the past 12 months of employment?' ordinal='29' />
+                  <column datatype='integer' name='How many years have you been with the company?' ordinal='30' />
+                  <column datatype='string' name='Where does the company fall on the battery value chain?' ordinal='31' />
+                  <column datatype='string' name='How would you classify your company&apos;s stage of development?' ordinal='32' />
+                  <column datatype='string' name='In what country is your office located?' ordinal='33' />
+                  <column datatype='string' name='In what state is your office located?' ordinal='34' />
+                  <column datatype='integer' name='How many days did you work in the office last week?' ordinal='35' />
+                  <column datatype='string' name='How many employees work at your company?' ordinal='36' />
+                  <column datatype='string' name='What is the total headcount on your team?' ordinal='37' />
+                  <column datatype='string' name='What is your current job title?' ordinal='38' />
+                  <column datatype='string' name='What does your role involve?' ordinal='39' />
+                  <column datatype='string' name='What is your current level?' ordinal='40' />
+                  <column datatype='string' name='Why did you choose your current role and company?' ordinal='41' />
+                  <column datatype='string' name='Have you previously worked in other industries?' ordinal='42' />
+                  <column datatype='string' name='What was your previous role before joining the battery industry?' ordinal='43' />
+                  <column datatype='integer' name='After working for 1 week?' ordinal='44' />
+                  <column datatype='integer' name='After working for 1 month?' ordinal='45' />
+                  <column datatype='integer' name='After working for 3 months?' ordinal='46' />
+                  <column datatype='integer' name='Last week?' ordinal='47' />
+                  <column datatype='string' name='When you first started your role, how were you trained?' ordinal='48' />
+                  <column datatype='string' name='When you first started in the battery industry, what could have improved your job performance on day one?' ordinal='49' />
+                  <column datatype='integer' name='How many internships did you complete before starting your current role?' ordinal='50' />
+                  <column datatype='string' name='In your opinion, what are the top skills that contributed to your success?' ordinal='51' />
+                  <column datatype='string' name='In your opinion, which positions are the hardest to fill in your company?' ordinal='52' />
+                  <column datatype='string' name='In your opinion, what do you think are the main barriers to hiring skilled talent in the battery industry?' ordinal='53' />
+                  <column datatype='integer' name='How many times have you changed employers in the last five years?' ordinal='54' />
+                  <column datatype='boolean' name='Are you currently seeking new job opportunities?' ordinal='55' />
+                  <column datatype='integer' name='My company has a good reputation in the industry' ordinal='56' />
+                  <column datatype='integer' name='I want to stay with my company for at least 12 more months' ordinal='57' />
+                  <column datatype='integer' name='I am satisfied with my current job stability' ordinal='58' />
+                  <column datatype='integer' name='I am confident in my ability to find my next job in the industry' ordinal='59' />
+                  <column datatype='string' name='If you were offered a similar role with a different company, what factors would influence your decision accept the offer?' ordinal='60' />
+                  <column datatype='string' name='Is there anything else you&apos;d like to share about what you&apos;re looking for in your next role?' ordinal='61' />
+                  <column datatype='integer' name='Mental health support' ordinal='62' />
+                  <column datatype='integer' name='Work-life balance initiatives' ordinal='63' />
+                  <column datatype='integer' name='Financial wellness programs' ordinal='64' />
+                  <column datatype='integer' name='Career development opportunities' ordinal='65' />
+                  <column datatype='string' name='What benefits does your company entitle you to?' ordinal='66' />
+                  <column datatype='integer' name='How many weeks of parental leave are you entitled to?' ordinal='67' />
+                  <column datatype='integer' name='How many weeks of paid time off are you entitled to each year?' ordinal='68' />
+                  <column datatype='integer' name='How many days of sick leave are you entitled to?' ordinal='69' />
+                  <column datatype='string' name='Are there any unique benefits that you value?' ordinal='70' />
+                  <column datatype='integer' name='After graduating, I know what role(s) to apply to' ordinal='71' />
+                  <column datatype='integer' name='After graduating, I will find a job' ordinal='72' />
+                  <column datatype='integer' name='By the time I graduate, I will have learned the skills needed to find a job' ordinal='73' />
+                  <column datatype='integer' name='I am optimistic about the future of the battery industry' ordinal='74' />
+                  <column datatype='string' name='After you graduate, what would be your ideal job title?' ordinal='75' />
+                  <column datatype='string' name='After you graduate, what part(s) of the battery value chain do you see yourself contributing to?' ordinal='76' />
+                  <column datatype='string' name='Which of the following aspects are you looking for in your first job?' ordinal='77' />
+                  <column datatype='integer' name='How much do you expect to be paid for your first job?' ordinal='78' />
+                  <column datatype='integer' name='How many internships have you completed so far?' ordinal='79' />
+                  <column datatype='string' name='During your previous internship, where did your  employer fall on the battery value chain?' ordinal='80' />
+                  <column datatype='string' name='During your previous internship, what did your role involve?' ordinal='81' />
+                  <column datatype='string' name='During your previous internship, what are the top three skills that contributed to your success?' ordinal='82' />
+                  <column datatype='string' name='During your previous internship, were there skills you wish you had learned but didn&apos;t? If yes, what were they?' ordinal='83' />
+                  <column datatype='string' name='During your previous internship, were there skills that you felt unprepared for? If yes, what were they?' ordinal='84' />
+                  <column datatype='integer' name='During your previous internship, what was your hourly pay?' ordinal='85' />
+                  <column datatype='integer' name='During your previous internship, how many hours per week did you work, on average?' ordinal='86' />
+                  <column datatype='datetime' name='Submitted At' ordinal='87' />
+                  <column datatype='string' name='Token' ordinal='88' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{81FD0092-0799-4B6C-99B1-93FACD1AAD55}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{01B3D75E-F152-47E5-BCD7-78297072C03A}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='Sheet 1' width='384'>
+      iVBORw0KGgoAAAANSUhEUgAAAYAAAAGACAYAAACkx7W/AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAFXUlEQVR4nO3VMQEAIAzAMMC/5yFjRxMF/XpnZg4AOW87AIAdBgAQZQAAUQYAEGUAAFEG
+      ABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAA
+      UQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBl
+      AABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYA
+      EGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABR
+      BgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUA
+      AFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQ
+      ZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEG
+      ABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAA
+      UQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBl
+      AABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYA
+      EGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABR
+      BgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUA
+      AFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQ
+      ZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEG
+      ABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAA
+      UQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBl
+      AABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYA
+      EGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABR
+      BgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUA
+      AFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQ
+      ZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEG
+      ABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAA
+      UQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBl
+      AABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEGABBlAABRBgAQZQAAUQYA
+      EGUAAFEGABBlAABRBgAQZQAAUQYAEGUAAFEfFxoG/IiMv0YAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>

@@ -298,6 +298,10 @@ class LLM:
 
         Avoid defining categories that are too vague or general, especially for technical skills. For example, instead of defining a category called 'technical skills', analyze the different types of skills listed to break them out into specific domains such as 'battery chemistry', 'battery engineering', 'battery testing', etc.
 
+        Aim to make each category mutually exclusive and collectively exhaustive.
+
+        Each category can include multiple subcategories separated by '/', e.g., 'Machine Learning / AI' or 'Supply Chain / Logistics / Procurement'.
+
         You can define up to {num_categories} categories.
 
         For each category, list the survey answers that belong to the category. Return your solution only as a JSON with the following format:
@@ -329,7 +333,8 @@ class LLM:
 
 
 
-    def classify_user_response(self, category_list, user_response):
+    def classify_user_response(self, category_list, user_response,
+                               model='gpt-4o-mini'):
         """
         Classify a user response into a category
 
@@ -339,6 +344,8 @@ class LLM:
             list of categories
         user_response : str
             user response
+        model : str
+            which LLM to use
 
         Returns
         -------
@@ -403,7 +410,7 @@ class LLM:
         """
 
         response = self.client.chat.completions.create(
-                        model='gpt-4o-mini',
+                        model=model,
                         messages=[
                             {"role": "system", "content" : dedent(sys_prompt)},
                             {"role": "user", "content" : dedent(user_prompt)}
