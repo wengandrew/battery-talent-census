@@ -261,3 +261,7 @@ Some tips for future self...
 5. In the question "If you were offered a similar role with a different company,
    what factors would influence your decision to accept the offer", we missed
    the option "Location", which is different from "Work location flexibility."
+
+6. "To what extent does your company prioritize the following employee
+   well-being solutions?" -> "To what extent do YOU prioritize...?"
+
