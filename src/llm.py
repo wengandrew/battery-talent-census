@@ -267,7 +267,8 @@ class LLM:
 
 
 
-    def define_categories(self, question, keyword_list):
+    def define_categories(self, question, keyword_list,
+                                num_categories=20):
         """
         Define categories for a list of keywords.
 
@@ -277,6 +278,8 @@ class LLM:
             question to ask the LLM
         keyword_list : list
             list of keywords
+        num_categories : int
+            number of categories to define
 
         Returns
         -------
@@ -293,9 +296,9 @@ class LLM:
 
         Your task is to define specific categories that capture all of the answers.
 
-        Avoid defining categories that are too vague or general. For example, instead of defining a category called 'technical skills', analyze the different types of skills listed to break them out into specific domains such as 'battery chemistry', 'battery engineering', 'battery testing', etc. Similarly, instead of defining a category called 'soft skills', analyze the different types of soft skills listed to break them out into specific domains such as 'communication', 'teamwork', 'leadership', etc.
+        Avoid defining categories that are too vague or general, especially for technical skills. For example, instead of defining a category called 'technical skills', analyze the different types of skills listed to break them out into specific domains such as 'battery chemistry', 'battery engineering', 'battery testing', etc.
 
-        You can define up to but not more than 20 categories.
+        You can define up to {num_categories} categories.
 
         For each category, list the survey answers that belong to the category. Return your solution only as a JSON with the following format:
 
@@ -352,7 +355,7 @@ class LLM:
 
         {str(category_list)}
 
-        If none of the categories apply or the survey response text is too vague, then assign the text to a new category called 'Other'.
+        Pick the category that most closely matches the text. If the text does not fit any of the categories, then you may assign the text to a new category called 'Other', but only do this as a last resort.
 
         Return your response as a JSON object.
 
