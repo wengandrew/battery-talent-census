@@ -192,6 +192,7 @@ class Analyst:
         gender = {}
         citizenship = {}
         military = {}
+        employment = {}
 
         for respondent in respondents_list:
             utils.update_dict_counter(degree, respondent.census['degree'])
@@ -202,6 +203,7 @@ class Analyst:
             utils.update_dict_counter(gender, respondent.census['gender'])
             utils.update_dict_counter(citizenship, respondent.census['citizenship'])
             utils.update_dict_counter(military, respondent.census['military_status'])
+            utils.update_dict_counter(employment, respondent.census['employment_status'])
 
         res = dict()
         res['degree']           = degree
@@ -212,6 +214,7 @@ class Analyst:
         res['gender']           = gender
         res['citizenship']      = citizenship
         res['military_status']  = military
+        res['employment_status'] = employment
 
         return res
 
