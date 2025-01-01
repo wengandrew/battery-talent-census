@@ -4,29 +4,8 @@ from collections import defaultdict
 from src.respondent import Respondent as Respondent
 import src.utils as utils
 
-FILE_GSHEET   = 'data/talent_census_data_20241216_gsheet_export.csv'
-FILE_TYPEFORM = 'data/talent_census_data_20241216_typeform_export.csv'
-
-# The selections 'Product integration (vehicles', and 'mobility)'
-# are duplicate entries since the string splitting operation picked
-# up the comma. We will ignore the entries from 'mobility)' which
-# duplicates those from 'Product integration (vehicles'.
-VALUE_CHAIN_MAP = {
-    'Cell production':                  'battery_cell',
-    'Recycling':                        'recycling',
-    'Component/precursor production':   'component',
-    'Energy infrastructure':            'infrastructure',
-    'Module/pack production':           'battery_pack',
-    'Product integration (vehicles':    'product_mobility',
-    'Equipment manufacturing':          'equipment',
-    'Software':                         'software',
-    'Product integration (stationary storage)': 'product_stationary',
-    'Product integration (electronics)': 'product_electronics',
-    'Refining':                         'refining',
-    'Consulting':                       'consulting',
-    'Mining':                           'mining',
-            }
-
+FILE_GSHEET   = 'data/talent_census_data_20241230_gsheet_export.csv'
+FILE_TYPEFORM = 'data/talent_census_data_20241230_typeform_export.csv'
 
 class Analyst:
     """
@@ -117,6 +96,7 @@ class Analyst:
         )]
 
         return filtered_list
+
 
     def filter_for_working(self, respondents_list=None) -> list:
         """
@@ -212,6 +192,7 @@ class Analyst:
         gender = {}
         citizenship = {}
         military = {}
+        employment = {}
 
         for respondent in respondents_list:
             utils.update_dict_counter(degree, respondent.census['degree'])
@@ -222,6 +203,7 @@ class Analyst:
             utils.update_dict_counter(gender, respondent.census['gender'])
             utils.update_dict_counter(citizenship, respondent.census['citizenship'])
             utils.update_dict_counter(military, respondent.census['military_status'])
+            utils.update_dict_counter(employment, respondent.census['employment_status'])
 
         res = dict()
         res['degree']           = degree
@@ -232,6 +214,7 @@ class Analyst:
         res['gender']           = gender
         res['citizenship']      = citizenship
         res['military_status']  = military
+        res['employment_status'] = employment
 
         return res
 
@@ -583,13 +566,16 @@ class Analyst:
         summary['response_by_time_num'] = np.arange(1, self.df_gsheet.shape[0] + 1)
 
         return summary
-    
+
+
     def summarize_student_sentiment(self, respondents_list=None) -> dict:
 
         if respondents_list is None:
             respondents_list = self.respondents_list
 
-        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+        student_list = self.filter_respondents_on(is_student=True,
+                                                  is_completed_all_questions=True)
+
         keys = student_list[0].student['student_sentiment']['keys']
 
         # Build an array of values with rows holding each response and columns
@@ -612,16 +598,18 @@ class Analyst:
         res['stdev']  = np.nanstd(value_array, axis=0)
 
         return res
-    
+
+
     def summarize_student_backgrounds(self, respondents_list=None) -> dict:
         """
-        Return summary of respondent's backgrounds
+        Return summary of student's backgrounds
         """
 
         if respondents_list is None:
             respondents_list = self.respondents_list
 
-        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+        student_list = self.filter_respondents_on(is_student=True,
+                                                  is_completed_all_questions=True)
 
         degree = {}
         country = {}
@@ -633,7 +621,7 @@ class Analyst:
             utils.update_dict_counter(country, respondent.student['country'])
             utils.update_dict_counter(state, respondent.student['state'])
             utils.update_dict_counter(education, respondent.student['education'])
-        
+
         res = dict()
         res['degree']           = degree
         res['country']          = country
@@ -641,6 +629,7 @@ class Analyst:
         res['education']        = education
 
         return res
+
 
     def summarize_student_ideal(self, respondents_list=None) -> dict:
         """
@@ -668,8 +657,6 @@ class Analyst:
         res['ideal_value_chain'] = ideal_vc_counter
         res['ideal_job_aspects'] = ideal_job_aspects_counter
         res['ideal_salary_list'] = np.array(ideal_salary_list)
-
-        # mean and std aren't very good... may need to manually pick out outliers
         res['ideal_salary_median'] = np.nanmedian(ideal_salary_list)
 
         return res
@@ -683,7 +670,8 @@ class Analyst:
         if respondents_list is None:
             respondents_list = self.respondents_list
 
-        student_list = self.filter_respondents_on(is_student=True,is_completed_all_questions=True)
+        student_list = self.filter_respondents_on(is_student=True,
+                                                  is_completed_all_questions=True)
 
         num_internships_counter = dict()
         internship_vc_counter = dict()
@@ -705,7 +693,7 @@ class Analyst:
             utils.nanappend(internship_skills_unprepared_list, respondent.student['internship_skills_unprepared'])
             utils.nanappend(internship_hourly_pay_list, respondent.student['internship_hourly_pay'])
             utils.nanappend(internship_hours_per_week_list, respondent.student['internship_hours_per_week'])
-        
+
         res = dict()
         res['num_internships'] = num_internships_counter
         res['internship_value_chain'] = internship_vc_counter

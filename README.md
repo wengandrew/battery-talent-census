@@ -225,6 +225,20 @@ The high-level strategy consists of a few parts:
    number of responses within each category. Ask it to return the response in a
    structured way, like in a Python dictionary
 
+8. Delegate certain visualizations to Tableau. It's just easier to make certain
+   plots in Tableau. Specifically:
+
+  - Question 8l: "During your previous internship, what was your hourly pay?"
+  - Question 8m: "During your prev. internship, how many hours per week did you
+   work, on average?"
+  - Question 8e: "How much do you expect to be paid for your first job?
+  - Question 7c-7e
+  - Question 6a
+  - Question 3a: "How many years have you been with the company?"
+  - Question 2b: "What is your annual base salary?"
+  - Question 1j: "What is your age?"
+  - Question 1i: "How many hours did you work last week?"
+  - Question 1h: "What is your total income over the past 12 months?"
 
 ## Notes for Census Implementation Improvements
 
@@ -247,3 +261,7 @@ Some tips for future self...
 5. In the question "If you were offered a similar role with a different company,
    what factors would influence your decision to accept the offer", we missed
    the option "Location", which is different from "Work location flexibility."
+
+6. "To what extent does your company prioritize the following employee
+   well-being solutions?" -> "To what extent do YOU prioritize...?"
+
