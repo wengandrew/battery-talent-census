@@ -158,6 +158,7 @@ The high-level strategy consists of a few parts:
      1. Students
      2. Professionals (not managers or directors)
      3. Professionals (managers or directors)
+
    Visualize this result by a line chart with rank-ordered y axis values
    comparing between the different respondent groups expressed on the x axis.
 
@@ -207,38 +208,38 @@ The high-level strategy consists of a few parts:
    filters, including pay, gender, country, value chain segment, role/seniority,
    before/after the November elections.
 
-5. "Are you really being underpaid?"
+5. ~~"Are you really being underpaid?"~~
 
-   We asked respondents whether they feel they are being underpaid compared to
+   ~~We asked respondents whether they feel they are being underpaid compared to
    similar roles. There's an empirical way to test this. First, filter for role
    type and seniority. Then, make a correlation plot with the x-axis being the
    respondent sentiment (1-5) and the y-axis is their pay. For the pay, we
    should look at base pay and total salary separately. Total salary is probably
    more relevant (this is the answer to one of the main census questions, not
-   from the company section).
+   from the company section).~~
 
-6. "How many live in one country but work for a company headquartered in another
-   country?"
+6. ~~"How many live in one country but work for a company headquartered in another
+   country?"~~
 
-7. Build a NLP processor function for the free-form response questions. Use
+7. ~~Build a NLP processor function for the free-form response questions. Use
    o1-preview; ask it to define categories based on the responses, and count the
    number of responses within each category. Ask it to return the response in a
-   structured way, like in a Python dictionary
+   structured way, like in a Python dictionary.~~
 
-8. Delegate certain visualizations to Tableau. It's just easier to make certain
-   plots in Tableau. Specifically:
+8. ~~Delegate certain visualizations to Tableau. It's just easier to make certain
+   plots in Tableau. Specifically:~~
 
-  - Question 8l: "During your previous internship, what was your hourly pay?"
-  - Question 8m: "During your prev. internship, how many hours per week did you
-   work, on average?"
-  - Question 8e: "How much do you expect to be paid for your first job?
-  - Question 7c-7e
-  - Question 6a
-  - Question 3a: "How many years have you been with the company?"
-  - Question 2b: "What is your annual base salary?"
-  - Question 1j: "What is your age?"
-  - Question 1i: "How many hours did you work last week?"
-  - Question 1h: "What is your total income over the past 12 months?"
+  - ~~Question 8l: "During your previous internship, what was your hourly pay?"~~
+  - ~~Question 8m: "During your prev. internship, how many hours per week did you
+   work, on average?"~~
+  - ~~Question 8e: "How much do you expect to be paid for your first job?"~~
+  - ~~Question 7c-7e~~
+  - ~~Question 6a~~
+  - ~~Question 3a: "How many years have you been with the company?"~~
+  - ~~Question 2b: "What is your annual base salary?"~~
+  - ~~Question 1j: "What is your age?"~~
+  - ~~Question 1i: "How many hours did you work last week?"~~
+  - ~~Question 1h: "What is your total income over the past 12 months?"~~
 
 ## Notes for Census Implementation Improvements
 
