@@ -241,10 +241,6 @@ The high-level strategy consists of a few parts:
   - ~~Question 1i: "How many hours did you work last week?"~~
   - ~~Question 1h: "What is your total income over the past 12 months?"~~
 
-9. When asking respondents what their role at their company is, it's better to ask them
-   for their ~primary~ role, not select "all roles that apply." Otherwise it becomes
-   difficult to use this variable to filter since we don't have information on what
-   percentage of their job consist of each role that they selected.
 
 ## Notes for Census Implementation Improvements
 
@@ -268,6 +264,11 @@ Some tips for future self...
    what factors would influence your decision to accept the offer", we missed
    the option "Location", which is different from "Work location flexibility."
 
-6. "To what extent does your company prioritize the following employee
+6. When asking respondents what their role at their company is, it's better to ask them
+   for their ~primary~ role, not select "all roles that apply." Otherwise it becomes
+   difficult to use this variable to filter since we don't have information on what
+   percentage of their job consist of each role that they selected.
+
+7. "To what extent does your company prioritize the following employee
    well-being solutions?" -> "To what extent do YOU prioritize...?"
 
