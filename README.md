@@ -269,6 +269,9 @@ Some tips for future self...
    difficult to use this variable to filter since we don't have information on what
    percentage of their job consist of each role that they selected.
 
-7. "To what extent does your company prioritize the following employee
+7. Include a question on "how many years of total experience do you have?" This is a more
+   fair metric for experience than "age."
+
+9. "To what extent does your company prioritize the following employee
    well-being solutions?" -> "To what extent do YOU prioritize...?"
 
