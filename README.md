@@ -300,3 +300,14 @@ Some tips for future self...
    about skill gaps, diversity, compensation, etc. We should really focus on
    asking smart "why" questions based on our results this year and use them as a
    precursor for the next effort.
+
+10. “When you first started in the battery industry, what could have improved
+    your job performance on day one?” This question shoudl have been "what do
+    you think are essential for your job success?" Stronger wording leads to
+    less ambiguous interpretation of results.
+
+
+
+
+
+
