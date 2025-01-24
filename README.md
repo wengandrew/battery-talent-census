@@ -241,6 +241,8 @@ The high-level strategy consists of a few parts:
   - ~~Question 1i: "How many hours did you work last week?"~~
   - ~~Question 1h: "What is your total income over the past 12 months?"~~
 
+9. A lot of respondents seem to be in sales / business / marketing. What happens
+   to the list of "top skills" if these people are removed?
 
 ## Notes for Census Implementation Improvements
 
@@ -274,4 +276,49 @@ Some tips for future self...
 
 9. "To what extent does your company prioritize the following employee
    well-being solutions?" -> "To what extent do YOU prioritize...?"
+
+7. When asking about gender, use "man/woman"; when asking about sex, use
+   "male/female."
+
+8. The next time we ask respondents about skills, we should figure out how to
+   prompt repondents to give responses that are not trivial. For example, if you
+   ask a person working on business development, their response shouldn't be
+   "business development." It should be something more detailed within their
+   sector, e.g., "working well with clients," or "communicating across
+   cultures." Similarly, for those in manufacturing, their response shouldn't be
+   "manufacturing" but something more nuanced, like "understanding statistical
+   process control concepts" or "understanding factory logistics" or "supply
+   chain management."
+
+9. When planning for the next iteration of the Census, we should reflect on a
+   few things: (1) 'respondent fatigue' - don't ask the same group of people to
+   do the same thing without giving some due time for the information to be
+   potentially different enough to be a meaningful endeavor. I think one year
+   might be too short for another general survey. It could be once every two
+   years, for example. (2) 'continuity' of questions. If we want to track
+   change over time then let's make sure we're asking the same set of questions
+   to the extent we can. Granted, there will be new questions we want to ask and
+   old questions we want to delete. Let's find the best balance between
+   "backwards compatibility" and designing the best census possible.
+   (3)'specialization'; the first Census was meant to paint, in broad
+   brushstrokes, the state of compensation, sentiment, diversity, etc. Now that
+   we have a sense of our audience, there are many opportunities to make the
+   next survey much more targeted. We can try more "microtargeting" for our
+   audience and dig into more specific questions to further uncover information
+   about skill gaps, diversity, compensation, etc. We should really focus on
+   asking smart "why" questions based on our results this year and use them as a
+   precursor for the next effort.
+
+10. “When you first started in the battery industry, what could have improved
+    your job performance on day one?” This question shoudl have been "what do
+    you think are essential for your job success?" Stronger wording leads to
+    less ambiguous interpretation of results.
+
+11. Lots of room to improve the "skills demand/supply" questions to make them
+    more specific and hone in on what's actually needed.
+
+
+
+
+
 
