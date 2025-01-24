@@ -306,6 +306,9 @@ Some tips for future self...
     you think are essential for your job success?" Stronger wording leads to
     less ambiguous interpretation of results.
 
+11. Lots of room to improve the "skills demand/supply" questions to make them
+    more specific and hone in on what's actually needed.
+
 
 
 
