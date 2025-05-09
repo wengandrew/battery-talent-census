@@ -23,7 +23,7 @@ python -m venv venv
 Now activate it.
 
 ```bash
-source venv/bin/acivate
+source venv/bin/activate
 ```
 
 Make sure it worked by checking your python command references the correct
@@ -41,7 +41,8 @@ pip install -r requirements.txt
 
 3. Read this document to get a sense of how the data and code are organized.
 
-4. Make a copy of `notebooks/explore_data.ipynb` and start exploring.
+4. Start exploring the notebooks. I recommend starting with:
+  1. `notebooks/1_analyst_respondent_demo.ipynb`
 
 
 ## Datasets
