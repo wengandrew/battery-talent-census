@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 ## Datasets
 
-Datasets for the analysis are kept under `/data`.
+Datasets for the analysis are kept under `/data/raw`.
 
 The data is stored in `.csv` files.
 

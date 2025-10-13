@@ -9,11 +9,11 @@ def resp():
 
 @pytest.fixture
 def df_gsheet():
-    return pd.read_csv('data/talent_census_data_20241216_gsheet_export.csv')
+    return pd.read_csv('data/raw/data_20241230_gsheet.csv')
 
 @pytest.fixture
 def df_typeform():
-    return pd.read_csv('data/talent_census_data_20241216_typeform_export.csv')
+    return pd.read_csv('data/raw/data_20241230_typeform.csv')
 
 def test_respondent_initialization(resp):
     assert resp.respondent_id == 'xgiqw1z6r37pu305hiipxgiqw11r00jc'
