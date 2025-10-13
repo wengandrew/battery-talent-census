@@ -4,7 +4,16 @@ Data analysis for Volta Foundation Battery Talent Census.
 
 Created by Andrew Weng, December 15, 2024.
 
-## Getting Started
+## Important Files
+
+Raw data files (see 'Datasets' section for details)
+- `data/raw/data_20241230_gsheet.csv`
+- `data/raw/data_20241230_gsheet.csv`
+
+Tableau Visualizations
+- `outputs/tableau-analysis-twb`
+
+## Getting Started with Programming
 
 Want to contribute? Do the following:
 
