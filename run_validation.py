@@ -339,6 +339,7 @@ def save_comparison(comparison):
 def save_text_report(comparison, summary):
     os.makedirs(os.path.dirname(REPORT_FILE), exist_ok=True)
     disagreements = [c for c in comparison if c["match"] == "disagree"]
+    disagreement_examples = sorted(disagreements, key=lambda d: int(d["index"]))[:10]
 
     with open(REPORT_FILE, "w") as f:
         f.write("Battery Talent Census - Validation Report\n")
@@ -412,6 +413,18 @@ def save_text_report(comparison, summary):
         for true_label in metrics["labels"]:
             row_counts = [str(metrics["confusion"][true_label][pred_label]) for pred_label in metrics["labels"]]
             f.write(true_label.replace(",", ";") + "," + ",".join(row_counts) + "\n")
+
+        f.write("\nExample mismatches (sample):\n")
+        if disagreement_examples:
+            for d in disagreement_examples:
+                f.write(f"- Response: {d['response_text']}\n")
+                f.write(f"  LLM:      {d['llm_category']}\n")
+                f.write(f"  Human:    {d['human_category']}\n")
+                if d.get("note"):
+                    f.write(f"  Note:     {d['note']}\n")
+                f.write("\n")
+        else:
+            f.write("- None\n")
 
         f.write("\n")
         f.write(f"Disagreements ({len(disagreements)}):\n")

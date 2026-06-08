@@ -65,6 +65,48 @@ Soft Skills (e.g.; flexibility; adaptability; resilience),0,0,0,0,1,0,0,0,0,0,0,
 Environmental Knowledge / Sustainability / Recycling,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Interdisciplinary / Cross-functional Collaboration,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,3
 
+Example mismatches (sample):
+- Response: Data Analysis
+  LLM:      Data Science / Data Analysis / AI / Machine Learning
+  Human:    Programming / Software Development
+
+- Response: small molecule development
+  LLM:      Other
+  Human:    Materials Science and Characterization
+
+- Response: Embedded Systems
+  LLM:      Programming / Software Development
+  Human:    Battery Management Systems (BMS)
+
+- Response: Networking
+  LLM:      Project Management / Leadership / Teamwork
+  Human:    Business Skills / Marketing / Strategy / Market Knowledge
+
+- Response: Understanding of Deviation
+  LLM:      Battery Testing / Failure Analysis / Quality Control
+  Human:    Battery Manufacturing / Scale-up / Process Engineering
+
+- Response: dexterity
+  LLM:      Soft Skills (e.g., flexibility, adaptability, resilience)
+  Human:    Battery Testing / Failure Analysis / Quality Control
+
+- Response: Metrology
+  LLM:      Battery Testing / Failure Analysis / Quality Control
+  Human:    Materials Science and Characterization
+
+- Response: networking
+  LLM:      Communication / Presentation Skills / Language Skills
+  Human:    Business Skills / Marketing / Strategy / Market Knowledge
+
+- Response: deep work
+  LLM:      Other
+  Human:    Soft Skills (e.g., flexibility, adaptability, resilience)
+
+- Response: foresight
+  LLM:      Innovation / Creativity / Problem Solving
+  Human:    Business Skills / Marketing / Strategy / Market Knowledge
+
+
 Disagreements (41):
 - Response: Data Analysis
   LLM:      Data Science / Data Analysis / AI / Machine Learning
