@@ -66,22 +66,36 @@ def _safe_div(num, den):
     return num / den if den else 0.0
 
 
-def compute_classification_metrics(comparison):
-    # Only use rows with a clear human label and a successful LLM classification.
-    # This excludes ambiguous/invalid human judgments from all accuracy metrics.
-    eval_rows = [
-        row for row in comparison
-        if row["match"] in {"agree", "disagree"}
-    ]
+def _normalize_true_label(row):
+    judgment = (row.get("human_judgment") or "").strip().lower()
+    if judgment == "ambiguous":
+        return "HUMAN_AMBIGUOUS"
+    if judgment == "invalid":
+        return "HUMAN_INVALID"
 
-    labels = list(CATEGORIES)
+    human_category = (row.get("human_category") or "").strip()
+    return human_category if human_category else "HUMAN_MISSING"
+
+
+def _normalize_pred_label(row):
+    llm_category = (row.get("llm_category") or "").strip()
+    return llm_category if llm_category else "LLM_MISSING"
+
+
+def compute_classification_metrics(comparison):
+    # Evaluate all sampled rows, including ambiguous/invalid judgments.
+    eval_rows = list(comparison)
+
+    labels = sorted({
+        *(_normalize_true_label(row) for row in eval_rows),
+        *(_normalize_pred_label(row) for row in eval_rows),
+    })
     confusion = {true_label: {pred_label: 0 for pred_label in labels} for true_label in labels}
 
     for row in eval_rows:
-        true_label = row["human_category"]
-        pred_label = row["llm_category"]
-        if true_label in confusion and pred_label in confusion[true_label]:
-            confusion[true_label][pred_label] += 1
+        true_label = _normalize_true_label(row)
+        pred_label = _normalize_pred_label(row)
+        confusion[true_label][pred_label] += 1
 
     total_eval = len(eval_rows)
     correct = sum(confusion[label][label] for label in labels)
@@ -143,7 +157,7 @@ def compute_classification_metrics(comparison):
 
     return {
         "total_eval": total_eval,
-        "excluded_rows": len(comparison) - total_eval,
+        "excluded_rows": 0,
         "correct": correct,
         "accuracy": accuracy,
         "micro_precision": micro_precision,
@@ -291,14 +305,14 @@ def compare_and_report(llm_results, human_review):
     if assignable > 0:
         print(f"    Agree:    {agree:4d} ({100*agree/assignable:.1f}%)")
         print(f"    Disagree: {disagree:4d} ({100*disagree/assignable:.1f}%)")
-        print()
-        print("  Classification metrics (filtered eval set only):")
-        print("    Excludes human judgments marked ambiguous/invalid.")
-        print(f"    Eval rows used:      {metrics['total_eval']} (excluded: {metrics['excluded_rows']})")
-        print(f"    Accuracy:          {metrics['accuracy']:.4f}")
-        print(f"    Micro P/R/F1:      {metrics['micro_precision']:.4f} / {metrics['micro_recall']:.4f} / {metrics['micro_f1']:.4f}")
-        print(f"    Macro P/R/F1:      {metrics['macro_precision']:.4f} / {metrics['macro_recall']:.4f} / {metrics['macro_f1']:.4f}")
-        print(f"    Weighted P/R/F1:   {metrics['weighted_precision']:.4f} / {metrics['weighted_recall']:.4f} / {metrics['weighted_f1']:.4f}")
+    print()
+    print("  Classification metrics (all sampled responses):")
+    print("    Includes clear, ambiguous, and invalid human judgments.")
+    print(f"    Eval rows used:      {metrics['total_eval']} (excluded: {metrics['excluded_rows']})")
+    print(f"    Accuracy:          {metrics['accuracy']:.4f}")
+    print(f"    Micro P/R/F1:      {metrics['micro_precision']:.4f} / {metrics['micro_recall']:.4f} / {metrics['micro_f1']:.4f}")
+    print(f"    Macro P/R/F1:      {metrics['macro_precision']:.4f} / {metrics['macro_recall']:.4f} / {metrics['macro_f1']:.4f}")
+    print(f"    Weighted P/R/F1:   {metrics['weighted_precision']:.4f} / {metrics['weighted_recall']:.4f} / {metrics['weighted_f1']:.4f}")
     print()
 
     # Show disagreements
@@ -381,8 +395,8 @@ def save_text_report(comparison, summary):
             f.write("  Disagree:    0 (0.0%)\n")
 
         metrics = summary["metrics"]
-        f.write("\nClassification metrics (filtered eval set only):\n")
-        f.write("  Excludes human judgments marked ambiguous/invalid.\n")
+        f.write("\nClassification metrics (all sampled responses):\n")
+        f.write("  Includes clear, ambiguous, and invalid human judgments.\n")
         f.write(f"  Eval rows used:      {metrics['total_eval']} (excluded: {metrics['excluded_rows']})\n")
         f.write(f"  Accuracy:          {metrics['accuracy']:.6f}\n")
         f.write(

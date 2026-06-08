@@ -11,59 +11,63 @@ LLM-Human Agreement (of 176 assignable):
   Agree:     135 (76.7%)
   Disagree:   41 (23.3%)
 
-Classification metrics (filtered eval set only):
-  Excludes human judgments marked ambiguous/invalid.
-  Eval rows used:      176 (excluded: 24)
-  Accuracy:          0.767045
-  Micro P/R/F1:      0.767045 / 0.767045 / 0.767045
-  Macro P/R/F1:      0.755851 / 0.780475 / 0.753982
-  Weighted P/R/F1:   0.793207 / 0.767045 / 0.769487
+Classification metrics (all sampled responses):
+  Includes clear, ambiguous, and invalid human judgments.
+  Eval rows used:      200 (excluded: 0)
+  Accuracy:          0.675000
+  Micro P/R/F1:      0.675000 / 0.675000 / 0.675000
+  Macro P/R/F1:      0.644404 / 0.686569 / 0.647705
+  Weighted P/R/F1:   0.697421 / 0.675000 / 0.673563
 
 Per-class metrics:
 label,precision,recall,f1,support,tp,fp,fn
-Battery Chemistry / Electrochemistry,0.944444,0.944444,0.944444,18,17,1,1
-Materials Science and Characterization,0.750000,0.750000,0.750000,8,6,2,2
+Battery Chemistry / Electrochemistry,0.944444,0.850000,0.894737,20,17,1,3
 Battery Design,0.750000,0.545455,0.631579,11,6,2,5
-Battery Manufacturing / Scale-up / Process Engineering,1.000000,0.826087,0.904762,23,19,0,4
-Battery Testing / Failure Analysis / Quality Control,0.733333,0.846154,0.785714,13,11,4,2
 Battery Management Systems (BMS),0.857143,0.750000,0.800000,8,6,1,2
-Data Science / Data Analysis / AI / Machine Learning,0.833333,0.714286,0.769231,14,10,2,4
-Modeling / Simulation / Computational Tools,0.857143,1.000000,0.923077,6,6,1,0
+Battery Manufacturing / Scale-up / Process Engineering,1.000000,0.791667,0.883721,24,19,0,5
+Battery Testing / Failure Analysis / Quality Control,0.733333,0.846154,0.785714,13,11,4,2
+Business Skills / Marketing / Strategy / Market Knowledge,0.666667,0.545455,0.600000,11,6,3,5
+Communication / Presentation Skills / Language Skills,0.727273,1.000000,0.842105,8,8,3,0
+Data Science / Data Analysis / AI / Machine Learning,0.666667,0.666667,0.666667,15,10,5,5
 Electrical Engineering / Power Electronics,1.000000,1.000000,1.000000,3,3,0,0
-Thermal Management,0.000000,0.000000,0.000000,1,0,1,1
+HUMAN_AMBIGUOUS,0.000000,0.000000,0.000000,19,0,0,19
+HUMAN_INVALID,0.000000,0.000000,0.000000,5,0,0,5
+Innovation / Creativity / Problem Solving,0.416667,1.000000,0.588235,5,5,7,0
+Interdisciplinary / Cross-functional Collaboration,0.500000,0.500000,0.500000,6,3,3,3
+Materials Science and Characterization,0.750000,0.666667,0.705882,9,6,2,3
+Modeling / Simulation / Computational Tools,0.666667,1.000000,0.800000,6,6,3,0
+Other,0.000000,0.000000,0.000000,0,0,20,0
 Programming / Software Development,0.375000,0.750000,0.500000,4,3,5,1
 Project Management / Leadership / Teamwork,0.555556,1.000000,0.714286,5,5,4,0
-Communication / Presentation Skills / Language Skills,0.800000,1.000000,0.888889,8,8,2,0
-Business Skills / Marketing / Strategy / Market Knowledge,0.857143,0.545455,0.666667,11,6,1,5
-Supply Chain / Logistics / Procurement,1.000000,0.800000,0.888889,5,4,0,1
-Innovation / Creativity / Problem Solving,0.625000,1.000000,0.769231,5,5,3,0
 Safety / Standards / Regulations / Compliance,1.000000,1.000000,1.000000,5,5,0,0
-Soft Skills (e.g.; flexibility; adaptability; resilience),0.923077,0.857143,0.888889,14,12,1,2
-Environmental Knowledge / Sustainability / Recycling,0.000000,0.000000,0.000000,0,0,0,0
-Interdisciplinary / Cross-functional Collaboration,0.500000,0.500000,0.500000,6,3,3,3
+Soft Skills (e.g.; flexibility; adaptability; resilience),0.923077,0.705882,0.800000,17,12,1,5
+Supply Chain / Logistics / Procurement,1.000000,0.800000,0.888889,5,4,0,1
+Thermal Management,0.000000,0.000000,0.000000,1,0,1,1
 
 Confusion matrix (rows=true human, cols=predicted LLM):
-human\pred,Battery Chemistry / Electrochemistry,Materials Science and Characterization,Battery Design,Battery Manufacturing / Scale-up / Process Engineering,Battery Testing / Failure Analysis / Quality Control,Battery Management Systems (BMS),Data Science / Data Analysis / AI / Machine Learning,Modeling / Simulation / Computational Tools,Electrical Engineering / Power Electronics,Thermal Management,Programming / Software Development,Project Management / Leadership / Teamwork,Communication / Presentation Skills / Language Skills,Business Skills / Marketing / Strategy / Market Knowledge,Supply Chain / Logistics / Procurement,Innovation / Creativity / Problem Solving,Safety / Standards / Regulations / Compliance,Soft Skills (e.g.; flexibility; adaptability; resilience),Environmental Knowledge / Sustainability / Recycling,Interdisciplinary / Cross-functional Collaboration
-Battery Chemistry / Electrochemistry,17,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Materials Science and Characterization,0,6,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-Battery Design,1,0,6,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,3
-Battery Manufacturing / Scale-up / Process Engineering,0,1,1,19,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-Battery Testing / Failure Analysis / Quality Control,0,0,0,0,11,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0
-Battery Management Systems (BMS),0,0,0,0,0,6,0,0,0,0,2,0,0,0,0,0,0,0,0,0
-Data Science / Data Analysis / AI / Machine Learning,0,0,0,0,1,0,10,0,0,0,3,0,0,0,0,0,0,0,0,0
-Modeling / Simulation / Computational Tools,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0
-Electrical Engineering / Power Electronics,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0
-Thermal Management,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-Programming / Software Development,0,0,0,0,0,0,1,0,0,0,3,0,0,0,0,0,0,0,0,0
-Project Management / Leadership / Teamwork,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0
-Communication / Presentation Skills / Language Skills,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0
-Business Skills / Marketing / Strategy / Market Knowledge,0,0,1,0,0,0,0,0,0,0,0,2,1,6,0,1,0,0,0,0
-Supply Chain / Logistics / Procurement,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,0,0,0,0,0
-Innovation / Creativity / Problem Solving,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0
-Safety / Standards / Regulations / Compliance,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0
-Soft Skills (e.g.; flexibility; adaptability; resilience),0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,12,0,0
-Environmental Knowledge / Sustainability / Recycling,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Interdisciplinary / Cross-functional Collaboration,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,3
+human\pred,Battery Chemistry / Electrochemistry,Battery Design,Battery Management Systems (BMS),Battery Manufacturing / Scale-up / Process Engineering,Battery Testing / Failure Analysis / Quality Control,Business Skills / Marketing / Strategy / Market Knowledge,Communication / Presentation Skills / Language Skills,Data Science / Data Analysis / AI / Machine Learning,Electrical Engineering / Power Electronics,HUMAN_AMBIGUOUS,HUMAN_INVALID,Innovation / Creativity / Problem Solving,Interdisciplinary / Cross-functional Collaboration,Materials Science and Characterization,Modeling / Simulation / Computational Tools,Other,Programming / Software Development,Project Management / Leadership / Teamwork,Safety / Standards / Regulations / Compliance,Soft Skills (e.g.; flexibility; adaptability; resilience),Supply Chain / Logistics / Procurement,Thermal Management
+Battery Chemistry / Electrochemistry,17,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,0,0,0
+Battery Design,1,6,1,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0
+Battery Management Systems (BMS),0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0
+Battery Manufacturing / Scale-up / Process Engineering,0,1,0,19,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0
+Battery Testing / Failure Analysis / Quality Control,0,0,0,0,11,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Business Skills / Marketing / Strategy / Market Knowledge,0,1,0,0,0,6,1,0,0,0,0,1,0,0,0,0,0,2,0,0,0,0
+Communication / Presentation Skills / Language Skills,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Data Science / Data Analysis / AI / Machine Learning,0,0,0,0,1,0,0,10,0,0,0,0,0,0,0,1,3,0,0,0,0,0
+Electrical Engineering / Power Electronics,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+HUMAN_AMBIGUOUS,0,0,0,0,0,2,0,3,0,0,0,3,0,0,1,10,0,0,0,0,0,0
+HUMAN_INVALID,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,2,0,0,0,0,0,0
+Innovation / Creativity / Problem Solving,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0
+Interdisciplinary / Cross-functional Collaboration,0,0,0,0,0,0,1,0,0,0,0,0,3,0,0,0,0,2,0,0,0,0
+Materials Science and Characterization,0,0,0,0,1,0,0,0,0,0,0,0,0,6,0,1,0,0,0,0,0,1
+Modeling / Simulation / Computational Tools,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0
+Other,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Programming / Software Development,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,3,0,0,0,0,0
+Project Management / Leadership / Teamwork,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0
+Safety / Standards / Regulations / Compliance,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0
+Soft Skills (e.g.; flexibility; adaptability; resilience),0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,3,0,0,0,12,0,0
+Supply Chain / Logistics / Procurement,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0
+Thermal Management,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
 
 Example mismatches (sample):
 - Response: Data Analysis
